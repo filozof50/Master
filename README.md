@@ -29,3 +29,9 @@ Pored ostalih parametara moguće je i dati specifikaciju o tome koju pretragu ž
 # Izlaz iz alata
 
 Kao izlaz iz alata se dobija direktorijum u kome se nalaze testovi koji odgovaraju putanjama koroz program koje su otkrivene simboličkim izvršavanjem. za svaku putanju su date vrednosti ulaznih podataka koje dovode do kretanja kroz istu. Da bi se pročitale ulazne vrednosti podataka koristi se ktest-tool ime_fajla.ktest pri čemu su fajlovi sa ekstenzijom .ktest automatski generisani od strane alata. Takođe se za svako pokretanje kreira direktorijum u kome se nalaze ovi testovi. Ukoliko se upotrebi komanda klee-stats ime_direktorijuma može se dobiti informacija o pokrivesnoti naredbi, pokrivesnoti grana u programu, vremenu izvršavanja, broju izvršenih LLVM instrukcija. 
+
+# Primer pokretanja
+
+
+# Primer izlaza
+
