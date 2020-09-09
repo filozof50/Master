@@ -32,6 +32,9 @@ Kao izlaz iz alata se dobija direktorijum u kome se nalaze testovi koji odgovara
 
 # Primer pokretanja
 
+Primer pokretanja alata za jedan od programa iz GNU Coreutils-a je:
+
+klee --simplify-sym-indices --write-cvcs --write-cov --output-module --max-memory=1000 --disable-inlining --optimize --use-forked-solver --use-cex-cache --libc=uclibc --posix-runtime --external-calls=all --only-output-states-covering-new --max-sym-array-size=4096 --max-time=720min --watchdog --max-memory-inhibit=false --max-static-fork-pct=1 --max-static-solve-pct=1 --max-static-cpfork-pct=1 --switch-type=internal --search=bfs-dfs -memory-part=0.4 -instructions-since-covered-new=10000 mv.bc --sym-args 0 1 10 --sym-args 0 2 2 --sym-files 1 8 --sym-stdin 8 --sym-stdout
 
 # Primer izlaza
 
