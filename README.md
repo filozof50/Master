@@ -1,6 +1,6 @@
 # KLEE
 
-KLEE je alat za simboličko izvršavanje koji je napravljen na LLVM-u. Implementiran je u programskom jeziku C++. Omogućava da se programi koji su napisani na programskim jezicima C i C++ simbolički izvršavaju, odnosno da se statički, bez pokretanja otkrivaju potencijalne greške. Alat daje informaciju o ulaznim podacima koji mogu dovesti do određene greške.
+KLEE je alat za simboličko izvršavanje koji je napravljen na LLVM-u. Implementiran je u programskom jeziku C++. Omogućava da se programi koji su napisani na programskim jezicima C i C++ simbolički izvršavaju, odnosno da se statički, bez pokretanja otkrivaju potencijalne greške. Alat daje informaciju o ulaznim podacima koji mogu dovesti do određene greške. U radu je alat obogaćen novim algoritmom za pretragu stabla stanja tokom simboličkog izvršavanja programa. Algoritam predstavlja kombinaciju grafovskih algoritam pretrage u dubinu i pretrage u širinu.
 
 # Organizacija repozitorijuma
 
