@@ -779,7 +779,7 @@ U nekim situacijama se može desiti da je niz DFS stanja prazan. To je slučaj k
     
 Nakon što se odabere stanje koje će biti naredno izvršeno, ono se izvršava. Pseudo k\^od funkcije za izvršavanje stanja je prikazan u listingu \ref{lst:izvrsi_stanje}. Zavisno od naredbe koja se nalazi u stanju može doći do evolucije stanja ukoliko nije bilo grananja ili može doći do evolucije stanja uz kreiranje novog stanja ukoliko je došlo do grananja. Ukoliko nema grananja već samo evolucije stanja ono se smatra novim stanjem, odnosno dodaje se opet u skup aktivnih stanja tako evoluirano. Ovo se radi kako bi algoritmi koji su opisani u delu \ref{algoritmi} radili ispravno. Takođe, ukoliko je stanje bilo završno, može doći i do njegovog izbacivanja iz niza ili reda stanja jer završno stanje označava kraj putanje. Nakon što se neko stanje izvrši, vrši se ažuriranje skupa aktivnih stanja dodavanjem novonastalih ili brisanjem onih stanja koja su višak.
 
-    \begin{lstlisting}[caption={Pseudo k\^od funkcije koja izvrsava stanje},captionpos=b,label={lst:izvrsi_stanje}]
+    \begin{lstlisting}[caption={Pseudo k\^od funkcije koja izvršava stanje},captionpos=b,label={lst:izvrsi_stanje}]
     function izvrsi_stanje(stanje):
       izvrsi(stanje.trenutna_naredba)
       
@@ -870,7 +870,7 @@ Kako bi mogao da bude implementiran novi algoritam u alatu KLEE, potrebno je i n
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\linewidth]{dijagram_klase.png}
-    \caption{Dijagram klase za novu implementiranu klasu BFSDFSSearcher.}
+    \caption{Dijagram klase za novu implementiranu klasu \textit{BFSDFSSearcher}.}
     \label{fig:UML}
 \end{figure}
 
