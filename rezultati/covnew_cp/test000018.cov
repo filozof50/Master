@@ -1,0 +1,14 @@
+libc/string/__xpg_strerror_r.c:207
+libc/string/__xpg_strerror_r.c:208
+libc/string/__xpg_strerror_r.c:209
+libc/string/__xpg_strerror_r.c:219
+libc/string/__xpg_strerror_r.c:222
+../../src/cp.c:574
+../../src/cp.c:579
+../../src/cp.c:629
+../../src/cp.c:690
+../../src/cp.c:692
+../../src/cp.c:707
+../../lib/basename.c:111
+../../lib/basename.c:113
+../../lib/basename.c:116

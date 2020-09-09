@@ -1,0 +1,16 @@
+libc/string/memchr.c:18
+libc/string/memchr.c:20
+libc/string/memchr.c:28
+libc/string/memchr.c:29
+libc/string/memchr.c:30
+libc/string/memchr.c:32
+libc/string/memchr.c:33
+libc/string/memchr.c:37
+../../src/printf.c:194
+../../src/printf.c:196
+../../src/printf.c:223
+../../src/printf.c:224
+../../src/printf.c:226
+../../src/printf.c:237
+../../src/printf.c:263
+../../src/printf.c:264

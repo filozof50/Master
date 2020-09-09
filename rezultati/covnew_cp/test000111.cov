@@ -1,0 +1,10 @@
+../../src/copy.c:1840
+../../src/copy.c:1841
+../../src/copy.c:1843
+../../src/copy.c:1844
+/home/strahinja/repo/klee/runtime/POSIX/stubs.c:107
+/home/strahinja/repo/klee/runtime/POSIX/stubs.c:108
+/home/strahinja/repo/klee/runtime/POSIX/stubs.c:109
+/home/strahinja/repo/klee/runtime/POSIX/stubs.c:114
+/home/strahinja/repo/klee/runtime/POSIX/stubs.c:115
+/home/strahinja/repo/klee/runtime/POSIX/stubs.c:116

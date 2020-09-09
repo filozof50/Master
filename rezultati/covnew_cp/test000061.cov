@@ -1,0 +1,13 @@
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:44
+/home/strahinja/repo/klee/runtime/POSIX/fd_32.c:106
+/home/strahinja/repo/klee/runtime/POSIX/fd_32.c:107
+/home/strahinja/repo/klee/runtime/POSIX/fd_32.c:108
+../../src/cp.c:557
+../../src/cp.c:559
+../../src/cp.c:574
+../../src/cp.c:577
+../../src/cp.c:578
+../../src/cp.c:591
+../../src/cp.c:603
+../../src/cp.c:605
+../../src/cp.c:606

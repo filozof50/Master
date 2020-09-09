@@ -1,0 +1,9 @@
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:1406
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:1407
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:1408
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:1409
+/home/strahinja/repo/klee/runtime/POSIX/fd_32.c:106
+/home/strahinja/repo/klee/runtime/POSIX/fd_32.c:107
+/home/strahinja/repo/klee/runtime/POSIX/fd_32.c:108
+../../src/chown.c:295
+../../src/chown.c:296

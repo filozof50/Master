@@ -1,0 +1,87 @@
+KLEE: WARNING ONCE: function "vasnprintf" has inline asm
+KLEE: WARNING: undefined reference to function: __ctype_get_mb_cur_max
+KLEE: WARNING: executable has module level assembly (ignoring)
+KLEE: WARNING ONCE: calling external: syscall(16, 0, 21505, 94103585288368) at /home/strahinja/repo/klee/runtime/POSIX/fd.c:1007 10
+KLEE: WARNING ONCE: Alignment of memory from call "malloc" is not modelled. Using alignment of 8.
+KLEE: WARNING ONCE: Alignment of memory from call "calloc" is not modelled. Using alignment of 8.
+KLEE: WARNING ONCE: Alignment of memory from call "realloc" is not modelled. Using alignment of 8.
+KLEE: WARNING ONCE: calling external: vprintf(94103584821936, 94103586790304) at libc/stdio/fprintf.c:35 14
+KLEE: WARNING ONCE: calling close_stdout with extra arguments.
+KLEE: WARNING ONCE: ioctl: (TCGETS) symbolic file, incomplete model
+KLEE: WARNING ONCE: calling external: __ctype_get_mb_cur_max() at ../../lib/quotearg.c:212 36
+KLEE: WARNING ONCE: calling external: printf(94103584937312, 94103584855936) at ../../src/paste.c:438 7
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000055.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000055.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000056.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000056.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000057.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000057.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000058.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000058.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000059.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000059.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000060.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000060.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000061.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000061.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000062.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000062.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000063.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000063.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000064.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000064.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000065.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000065.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000066.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000066.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000067.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000067.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000068.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000068.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000069.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000069.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000070.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000070.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000071.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000071.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000072.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000072.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000073.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000073.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000074.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000074.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000075.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000075.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000076.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000076.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000077.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000077.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000078.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000078.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: unable to write output test case, losing it
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000079.cvc".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).
+KLEE: WARNING: error opening file "/home/strahinja/coreutils-6.11/obj-llvm/src/klee-out-0/test000079.cov".  KLEE may have run out of file descriptors: try to increase the maximum number of open file descriptors by using ulimit (Too many open files).

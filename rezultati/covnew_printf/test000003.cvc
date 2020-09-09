@@ -1,0 +1,51 @@
+n_args0  : ARRAY BITVECTOR(32) OF BITVECTOR(8);
+n_args_11  : ARRAY BITVECTOR(32) OF BITVECTOR(8);
+model_version2  : ARRAY BITVECTOR(32) OF BITVECTOR(8);
+arg003  : ARRAY BITVECTOR(32) OF BITVECTOR(8);
+arg014  : ARRAY BITVECTOR(32) OF BITVECTOR(8);
+arg005  : ARRAY BITVECTOR(32) OF BITVECTOR(8);
+%----------------------------------------------------
+ASSERT( BVGT(0x00000002,(n_args0[0x00000003] @ (n_args0[0x00000002] @ (n_args0[0x00000001] @ n_args0[0x00000000]
+)
+)
+))
+ );
+ASSERT( ( NOT( SBVGT((n_args0[0x00000003] @ (n_args0[0x00000002] @ (n_args0[0x00000001] @ n_args0[0x00000000]
+)
+)
+),0x00000000)
+)) );
+ASSERT( BVGT(0x00000003,(n_args_11[0x00000003] @ (n_args_11[0x00000002] @ (n_args_11[0x00000001] @ n_args_11[0x00000000]
+)
+)
+))
+ );
+ASSERT( SBVGT((n_args_11[0x00000003] @ (n_args_11[0x00000002] @ (n_args_11[0x00000001] @ n_args_11[0x00000000]
+)
+)
+),0x00000000)
+ );
+ASSERT( ( NOT( ((((0x01 = n_args_11[0x00000000]
+) AND (0x00 = n_args_11[0x00000001]
+)
+) AND (0x00 = n_args_11[0x00000002]
+)
+) AND (0x00 = n_args_11[0x00000003]
+)
+))) );
+ASSERT( ((((0x01 = model_version2[0x00000000]
+) AND (0x00 = model_version2[0x00000001]
+)
+) AND (0x00 = model_version2[0x00000002]
+)
+) AND (0x00 = model_version2[0x00000003]
+)
+) );
+ASSERT( (0x2D = arg003[0x00000000]
+) );
+ASSERT( (0x2D = arg003[0x00000001]
+) );
+ASSERT( (0x00 = arg014[0x00000000]
+) );
+%----------------------------------------------------
+QUERY( FALSE  );

@@ -1,0 +1,26 @@
+KLEE: WARNING ONCE: function "vasnprintf" has inline asm
+KLEE: WARNING: undefined reference to function: __ctype_get_mb_cur_max
+KLEE: WARNING: executable has module level assembly (ignoring)
+KLEE: WARNING ONCE: calling external: syscall(16, 0, 21505, 94774427057184) at /home/strahinja/repo/klee/runtime/POSIX/fd.c:1007 10
+KLEE: WARNING ONCE: Alignment of memory from call "malloc" is not modelled. Using alignment of 8.
+KLEE: WARNING ONCE: Alignment of memory from call "calloc" is not modelled. Using alignment of 8.
+KLEE: WARNING ONCE: Alignment of memory from call "realloc" is not modelled. Using alignment of 8.
+KLEE: WARNING ONCE: calling external: vprintf(94774426732752, 94774427608000) at libc/stdio/fprintf.c:35 14
+KLEE: WARNING ONCE: calling close_stdout with extra arguments.
+KLEE: WARNING ONCE: calling external: __ctype_get_mb_cur_max() at ../../lib/quotearg.c:212 36
+KLEE: WARNING: link: ignoring (EPERM)
+KLEE: WARNING: link: ignoring (EPERM)
+KLEE: WARNING: link: ignoring (EPERM)
+KLEE: WARNING: link: ignoring (EPERM)
+KLEE: WARNING: link: ignoring (EPERM)
+KLEE: WARNING: link: ignoring (EPERM)
+KLEE: WARNING: link: ignoring (EPERM)
+KLEE: WARNING: link: ignoring (EPERM)
+KLEE: WARNING: link: ignoring (EPERM)
+KLEE: WARNING: link: ignoring (EPERM)
+KLEE: WARNING: link: ignoring (EPERM)
+KLEE: WARNING: link: ignoring (EPERM)
+KLEE: WARNING ONCE: calling external: printf(94774426734000, 94774421147840, 94774421147840) at ../../src/link.c:52 7
+KLEE: WARNING: link: ignoring (EPERM)
+KLEE: WARNING: link: ignoring (EPERM)
+KLEE: WARNING: link: ignoring (EPERM)

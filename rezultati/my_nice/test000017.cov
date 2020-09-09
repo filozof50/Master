@@ -1,0 +1,13 @@
+../../lib/xstrtol.c:104
+../../lib/quotearg.c:202
+../../lib/quotearg.c:208
+../../lib/quotearg.c:298
+../../lib/quotearg.c:301
+../../lib/quotearg.c:302
+../../lib/quotearg.c:303
+../../lib/quotearg.c:304
+../../lib/quotearg.c:311
+../../lib/quotearg.c:312
+../../lib/quotearg.c:417
+libc/stdlib/stdlib.c:526
+libc/stdlib/stdlib.c:527

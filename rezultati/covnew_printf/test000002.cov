@@ -1,0 +1,10 @@
+libc/misc/error/error.c:65
+../../src/printf.c:235
+../../src/printf.c:237
+../../src/printf.c:238
+../../src/printf.c:239
+../../src/printf.c:241
+../../src/printf.c:244
+../../src/printf.c:245
+../../src/printf.c:249
+../../src/printf.c:622

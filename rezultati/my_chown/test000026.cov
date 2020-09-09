@@ -1,0 +1,16 @@
+../../lib/userspec.c:102
+../../lib/userspec.c:110
+../../lib/userspec.c:115
+../../lib/userspec.c:117
+../../lib/userspec.c:202
+../../lib/userspec.c:203
+../../lib/userspec.c:204
+../../lib/userspec.c:210
+../../lib/userspec.c:211
+../../lib/userspec.c:212
+../../lib/xstrtol.c:80
+../../lib/xstrtol.c:98
+../../lib/xstrtol.c:100
+../../lib/xstrtol.c:104
+libc/pwd_grp/pwd_grp.c:527
+libc/pwd_grp/pwd_grp.c:532

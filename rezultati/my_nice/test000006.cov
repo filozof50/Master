@@ -1,0 +1,9 @@
+../../src/nice.c:68
+../../src/nice.c:70
+../../src/nice.c:71
+../../src/nice.c:89
+../../src/nice.c:138
+libc/unistd/getopt.c:420
+libc/unistd/getopt.c:827
+libc/unistd/getopt.c:843
+libc/unistd/getopt.c:863

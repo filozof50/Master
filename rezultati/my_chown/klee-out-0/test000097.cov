@@ -1,0 +1,4 @@
+libc/stdio/_vfprintf.c:1590
+../../src/printf.c:326
+../../lib/vasnprintf.c:4083
+../../lib/vasnprintf.c:4178

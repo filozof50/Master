@@ -1,0 +1,20 @@
+KLEE: Using STP solver backend
+KLEE: WorkaroundLLVMPR39177: replaced alias @fputc with clone of function @__fputc_unlocked
+KLEE: WorkaroundLLVMPR39177: replaced alias @fputc_unlocked with clone of function @__fputc_unlocked
+KLEE: WorkaroundLLVMPR39177: replaced alias @fputs with clone of function @fputs_unlocked
+KLEE: WorkaroundLLVMPR39177: replaced alias @fwrite with clone of function @fwrite_unlocked
+KLEE: WorkaroundLLVMPR39177: replaced alias @fgetc_unlocked with clone of function @__fgetc_unlocked
+KLEE: increased time budget from 5.000000 to 5.612419
+
+KLEE: increased time budget from 5.612419 to 6.735545
+
+KLEE: increased time budget from 6.735545 to 8.466424
+
+KLEE: increased time budget from 8.466424 to 9.874389
+
+KLEE: increased time budget from 9.874389 to 10.945814
+
+KLEE: increased time budget from 10.945814 to 12.379581
+
+KLEE: HaltTimer invoked
+KLEE: halting execution, dumping remaining states

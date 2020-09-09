@@ -1,0 +1,10 @@
+../../lib/fts.c:510
+../../lib/fts.c:511
+../../lib/fts.c:523
+../../lib/fts.c:524
+../../lib/fts.c:525
+../../lib/fts.c:526
+libc/string/memmove.c:41
+libc/string/memmove.c:42
+libc/string/memmove.c:43
+libc/string/memmove.c:45

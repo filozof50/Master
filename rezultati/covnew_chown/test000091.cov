@@ -1,0 +1,16 @@
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:212
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:213
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:214
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:234
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:235
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:242
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:245
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:247
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:248
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:251
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:252
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:253
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:254
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:255
+../../src/chown-core.c:257
+../../src/chown-core.c:313

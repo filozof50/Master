@@ -1,0 +1,4 @@
+libc/string/strchr.c:22
+libc/unistd/exec.c:261
+libc/unistd/exec.c:262
+libc/unistd/exec.c:277

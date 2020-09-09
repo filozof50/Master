@@ -1,0 +1,6 @@
+../../src/head.c:887
+../../src/head.c:888
+../../lib/xstrtol.c:104
+libc/misc/error/error.c:65
+libc/stdlib/stdlib.c:526
+libc/stdlib/stdlib.c:527

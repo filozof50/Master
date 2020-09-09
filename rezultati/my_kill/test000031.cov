@@ -1,0 +1,5 @@
+libc/string/memchr.c:30
+../../src/kill.c:142
+../../src/kill.c:146
+../../lib/xmalloc.c:119
+../../lib/xmalloc.c:121

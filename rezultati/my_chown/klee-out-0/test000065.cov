@@ -1,0 +1,8 @@
+libc/stdio/fwrite.c:36
+libc/stdio/_vfprintf.c:1817
+../../src/printf.c:448
+../../src/printf.c:457
+../../src/printf.c:458
+../../lib/vasnprintf.c:4080
+../../lib/vasnprintf.c:4083
+../../lib/vasnprintf.c:4224

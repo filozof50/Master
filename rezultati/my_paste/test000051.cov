@@ -1,0 +1,13 @@
+../../src/paste.c:178
+../../src/paste.c:229
+../../src/paste.c:230
+../../src/paste.c:245
+../../src/paste.c:305
+../../src/paste.c:306
+../../src/paste.c:307
+../../src/paste.c:308
+libc/stdio/fwrite.c:23
+libc/stdio/fwrite.c:24
+libc/stdio/fwrite.c:27
+libc/stdio/fwrite.c:28
+libc/stdio/fwrite.c:29

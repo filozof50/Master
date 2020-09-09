@@ -1,0 +1,13 @@
+libc/stdio/_fpmaxtostr.c:269
+libc/stdio/_fpmaxtostr.c:270
+../../src/printf.c:326
+../../src/printf.c:432
+../../src/printf.c:435
+../../lib/vasnprintf.c:3584
+../../lib/vasnprintf.c:3928
+../../lib/vasnprintf.c:4080
+../../lib/vasnprintf.c:4083
+../../lib/vasnprintf.c:4204
+../../lib/printf-parse.c:83
+../../lib/printf-parse.c:201
+../../lib/printf-parse.c:203

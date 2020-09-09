@@ -1,0 +1,10 @@
+../../lib/argmatch.c:84
+../../lib/argmatch.c:88
+../../lib/argmatch.c:89
+../../lib/argmatch.c:91
+../../lib/argmatch.c:177
+../../lib/argmatch.c:178
+../../lib/argmatch.c:180
+../../src/mv.c:394
+libc/unistd/getopt.c:700
+libc/unistd/getopt.c:735

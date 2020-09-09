@@ -1,0 +1,5 @@
+libc/stdlib/stdlib.c:526
+libc/stdlib/stdlib.c:527
+libc/unistd/getopt.c:632
+libc/unistd/getopt.c:633
+libc/unistd/getopt.c:696

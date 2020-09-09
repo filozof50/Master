@@ -1,0 +1,12 @@
+../../src/kill.c:82
+../../src/kill.c:84
+../../src/kill.c:85
+../../src/kill.c:118
+../../src/kill.c:351
+libc/unistd/getopt.c:420
+libc/unistd/getopt.c:820
+libc/unistd/getopt.c:827
+libc/unistd/getopt.c:843
+libc/unistd/getopt.c:863
+libc/unistd/getopt.c:864
+libc/unistd/getopt.c:865

@@ -1,0 +1,19 @@
+./klee --simplify-sym-indices --write-cvcs --write-cov --output-module --max-memory=1000 --disable-inlining --optimize --use-forked-solver --use-cex-cache --libc=uclibc --posix-runtime --external-calls=all --only-output-states-covering-new --max-sym-array-size=4096 --max-time=720min --watchdog --max-memory-inhibit=false --max-static-fork-pct=1 --max-static-solve-pct=1 --max-static-cpfork-pct=1 --switch-type=internal --search=new_searcher -memory-part=0.4 /home/strahinja/coreutils-6.11/obj-llvm/src/chown.bc --sym-args 0 1 10 --sym-args 0 2 2 --sym-files 1 8 --sym-stdin 8 --sym-stdout
+PID: 12027
+Using monotonic steady clock with 1/1000000000s resolution
+Started: 2020-08-22 04:28:09
+BEGIN searcher description
+My Searcher
+END searcher description
+Finished: 2020-08-22 07:48:38
+Elapsed: 03:20:29
+KLEE: done: explored paths = 1766971
+KLEE: done: avg. constructs per query = 674
+KLEE: done: total queries = 58890
+KLEE: done: valid queries = 24284
+KLEE: done: invalid queries = 34606
+KLEE: done: query cex = 58890
+
+KLEE: done: total instructions = 324323179
+KLEE: done: completed paths = 1766971
+KLEE: done: generated tests = 79

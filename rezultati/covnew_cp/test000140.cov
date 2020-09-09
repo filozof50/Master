@@ -1,0 +1,7 @@
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:628
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:630
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:631
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:632
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:633
+/home/strahinja/repo/klee/runtime/POSIX/fd.c:634
+../../src/copy.c:2034

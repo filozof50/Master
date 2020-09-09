@@ -1,0 +1,4 @@
+../../src/chown.c:231
+../../src/chown.c:232
+libc/unistd/getopt.c:633
+libc/unistd/getopt.c:696

@@ -1,0 +1,95 @@
+n_args0  : ARRAY BITVECTOR(32) OF BITVECTOR(8);
+n_args_11  : ARRAY BITVECTOR(32) OF BITVECTOR(8);
+model_version2  : ARRAY BITVECTOR(32) OF BITVECTOR(8);
+arg003  : ARRAY BITVECTOR(32) OF BITVECTOR(8);
+const_arr14  : ARRAY BITVECTOR(32) OF BITVECTOR(8);
+arg005  : ARRAY BITVECTOR(32) OF BITVECTOR(8);
+const_arr26  : ARRAY BITVECTOR(32) OF BITVECTOR(8);
+const_arr37  : ARRAY BITVECTOR(32) OF BITVECTOR(8);
+%----------------------------------------------------
+ASSERT( BVGT(0x00000002,(n_args0[0x00000003] @ (n_args0[0x00000002] @ (n_args0[0x00000001] @ n_args0[0x00000000]
+)
+)
+))
+ );
+ASSERT( SBVGT((n_args0[0x00000003] @ (n_args0[0x00000002] @ (n_args0[0x00000001] @ n_args0[0x00000000]
+)
+)
+),0x00000000)
+ );
+ASSERT( BVGT(0x00000003,(n_args_11[0x00000003] @ (n_args_11[0x00000002] @ (n_args_11[0x00000001] @ n_args_11[0x00000000]
+)
+)
+))
+ );
+ASSERT( ( NOT( SBVGT((n_args_11[0x00000003] @ (n_args_11[0x00000002] @ (n_args_11[0x00000001] @ n_args_11[0x00000000]
+)
+)
+),0x00000000)
+)) );
+ASSERT( ((((0x01 = model_version2[0x00000000]
+) AND (0x00 = model_version2[0x00000001]
+)
+) AND (0x00 = model_version2[0x00000002]
+)
+) AND (0x00 = model_version2[0x00000003]
+)
+) );
+ASSERT( (0x2D = arg003[0x00000000]
+) );
+ASSERT( BVGT(0x0000000A,BVPLUS(32, 
+0xFFFFFFD0, 
+BVSX(arg003[0x00000002],32)
+)
+)
+ );
+ASSERT( (0x2D = arg003[0x00000001]
+) );
+ASSERT( SBVGT((0x000000 @ BVPLUS(32, 
+0xFFFFFFD0, 
+BVSX(arg003[0x00000003],32)
+)
+[7:0]
+),0x00000009)
+ );
+ASSERT( ( NOT( SBVGT(0x00000041,BVSX(arg003[0x00000003],32)
+)
+)) );
+ASSERT( ( NOT( SBVGT(0x0000000A,(0x000000 @ BVPLUS(32, 
+0xFFFFFFA9, 
+(0x00000020 | BVSX(arg003[0x00000003],32)
+
+))
+[7:0]
+))
+)) );
+ASSERT( (LET let_k_0 = arg003[0x00000002] IN 
+((0x37 = let_k_0
+) OR ((0x36 = let_k_0
+) OR ((0x35 = let_k_0
+) OR ((0x34 = let_k_0
+) OR ((0x33 = let_k_0
+) OR ((0x32 = let_k_0
+) OR ((0x31 = let_k_0
+) OR ((0x30 = let_k_0
+) OR ((0x39 = let_k_0
+) OR (0x38 = let_k_0
+)
+)
+)
+)
+)
+)
+)
+)
+)
+))  );
+ASSERT( (LET let_k_0 = arg003[0x00000003] IN 
+((0x7D = let_k_0
+) OR (0x7B = let_k_0
+)
+))  );
+ASSERT( (0x00 = arg003[0x00000004]
+) );
+%----------------------------------------------------
+QUERY( FALSE  );
