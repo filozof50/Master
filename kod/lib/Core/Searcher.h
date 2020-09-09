@@ -81,8 +81,38 @@ namespace klee {
       NURS_RP,
       NURS_ICnt,
       NURS_CPICnt,
-      NURS_QC
+      NURS_QC,
+      BFS_DFS
     };
+  };
+
+  class BFSDFSSearcher : public Searcher {
+    std::vector<ExecutionState*> BFSStates;
+    std::vector<ExecutionState*> DFSStates;
+    bool runningBFS;
+    double mMemoryPart;
+    int instructionsSinceCoveredNew;
+    int instructions;
+    Executor &exe;
+
+  public:
+    BFSDFSSearcher(double memory_part, int instsSinceCoveredNew, Executor &exec);
+    ~BFSDFSSearcher() {};
+    void changeAlgorithm();
+    bool isRunningBFS() const;
+    void BFSUpdate(ExecutionState *current, const std::vector<ExecutionState *> &addedStates,
+                   const std::vector<ExecutionState *> &removedStates);
+    void DFSUpdate(ExecutionState *current, const std::vector<ExecutionState *> &addedStates,
+                   const std::vector<ExecutionState *> &removedStates);
+    ExecutionState &selectState();
+    int findStateIndex();
+    double getMemoryPart() const;
+    void update(ExecutionState *current, const std::vector<ExecutionState *> &addedStates,
+                const std::vector<ExecutionState *> &removedStates);
+    bool empty() { return BFSStates.empty() && DFSStates.empty(); }
+    void printName(llvm::raw_ostream &os) {
+      os << "My Searcher\n";
+    }
   };
 
   class DFSSearcher : public Searcher {

@@ -2733,25 +2733,36 @@ void Executor::updateStates(ExecutionState *current) {
   if (searcher) {
     searcher->update(current, addedStates, removedStates);
   }
-  
+
   states.insert(addedStates.begin(), addedStates.end());
   addedStates.clear();
 
   for (std::vector<ExecutionState *>::iterator it = removedStates.begin(),
-                                               ie = removedStates.end();
-       it != ie; ++it) {
+       ie = removedStates.end(); it != ie; ++it) {
     ExecutionState *es = *it;
     std::set<ExecutionState*>::iterator it2 = states.find(es);
-    assert(it2!=states.end());
-    states.erase(it2);
-    std::map<ExecutionState*, std::vector<SeedInfo> >::iterator it3 = 
-      seedMap.find(es);
+    if (it2 != states.end())
+      states.erase(it2);
+    std::map<ExecutionState*, std::vector<SeedInfo> >::iterator it3 =
+    seedMap.find(es);
     if (it3 != seedMap.end())
-      seedMap.erase(it3);
+    seedMap.erase(it3);
     processTree->remove(es->ptreeNode);
     delete es;
   }
+
   removedStates.clear();
+}
+
+void Executor::removeFromStates(std::vector<ExecutionState *> states_to_remove) {
+  for (auto es : states_to_remove) {
+    for (auto it = states.begin(); it != states.end(); it++) {
+      if (*it == es) {
+        states.erase(it);
+        terminateStateEarly(*(*it), "Memory limit exceeded.");
+      }
+    }
+  }
 }
 
 template <typename TypeIt>
@@ -2831,6 +2842,18 @@ void Executor::bindModuleConstants() {
 }
 
 void Executor::checkMemoryUsage() {
+
+  if (stats::instructions % 500 == 0) {
+    if (dynamic_cast<const BFSDFSSearcher*>(searcher) != nullptr) {
+      if (dynamic_cast<const BFSDFSSearcher*>(searcher)->isRunningBFS()) {
+        unsigned long mbs = (util::GetTotalMallocUsage() >> 20) + (memory->getUsedDeterministicSize() >> 20);
+
+        if (mbs >= (dynamic_cast<const BFSDFSSearcher *>(searcher))->getMemoryPart() * MaxMemory)
+          (dynamic_cast<BFSDFSSearcher *>(searcher))->changeAlgorithm();
+        }
+      }
+  }
+
   if (!MaxMemory)
     return;
   if ((stats::instructions & 0xFFFF) == 0) {
@@ -2951,7 +2974,10 @@ void Executor::run(ExecutionState &initialState) {
   std::vector<ExecutionState *> newStates(states.begin(), states.end());
   searcher->update(0, newStates, std::vector<ExecutionState *>());
 
-  while (!states.empty() && !haltExecution) {
+  bool shouldNotHalt = true;
+
+  while ((!states.empty() && !haltExecution) ||
+         (dynamic_cast<BFSDFSSearcher *>(searcher) != nullptr && !dynamic_cast<BFSDFSSearcher *>(searcher)->empty())) {
     ExecutionState &state = searcher->selectState();
     KInstruction *ki = state.pc;
     stepInstruction(state);

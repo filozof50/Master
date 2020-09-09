@@ -48,7 +48,8 @@ cl::list<Searcher::CoreSearchType> CoreSearch(
                    "use NURS with Instr-Count"),
         clEnumValN(Searcher::NURS_CPICnt, "nurs:cpicnt",
                    "use NURS with CallPath-Instr-Count"),
-        clEnumValN(Searcher::NURS_QC, "nurs:qc", "use NURS with Query-Cost")
+        clEnumValN(Searcher::NURS_QC, "nurs:qc", "use NURS with Query-Cost"),
+        clEnumValN(Searcher::BFS_DFS, "bfs-dfs", "Combination of BFS and DFS")
             KLEE_LLVM_CL_VAL_END),
     cl::cat(SearchCat));
 
@@ -81,6 +82,17 @@ cl::opt<std::string> BatchTime(
     cl::init("5s"),
     cl::cat(SearchCat));
 
+cl::opt<double> MemoryPart(
+    "memory-part",
+    cl::desc("Part of memory after which is full, search changes Algorithm to DFS in BFS-DFS searcher"),
+    cl::init(0.4),
+    cl::cat(SearchCat));
+
+cl::opt<int> InstsSinceCoveredNew(
+    "instructions-since-covered-new",
+    cl::desc("Number of instructions to remove states in BFS-DFS Searcher when DFS algorithm is active"),
+    cl::init(10000),
+    cl::cat(SearchCat));
 } // namespace
 
 void klee::initializeSearchOptions() {
@@ -119,6 +131,7 @@ Searcher *getNewSearcher(Searcher::CoreSearchType type, Executor &executor) {
   case Searcher::NURS_ICnt: searcher = new WeightedRandomSearcher(WeightedRandomSearcher::InstCount); break;
   case Searcher::NURS_CPICnt: searcher = new WeightedRandomSearcher(WeightedRandomSearcher::CPInstCount); break;
   case Searcher::NURS_QC: searcher = new WeightedRandomSearcher(WeightedRandomSearcher::QueryCost); break;
+  case Searcher::BFS_DFS: searcher = new BFSDFSSearcher(MemoryPart, InstsSinceCoveredNew, executor); break;
   }
 
   return searcher;

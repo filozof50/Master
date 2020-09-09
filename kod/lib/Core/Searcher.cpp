@@ -46,6 +46,133 @@ namespace klee {
 
 Searcher::~Searcher() {
 }
+///
+
+BFSDFSSearcher::BFSDFSSearcher(double memoryPart, int instsSinceCoveredNew, Executor &executor)
+    : exe(executor) {
+  runningBFS = true;
+  mMemoryPart = memoryPart;
+  instructionsSinceCoveredNew = instsSinceCoveredNew;
+}
+
+ExecutionState &BFSDFSSearcher::selectState() {
+  if (runningBFS) {
+    return *BFSStates.front();
+  } else {
+    if (DFSStates.size() == 0) {
+      instructions = stats::instructions;
+      int index = findStateIndex();
+      DFSStates.push_back(BFSStates[index]);
+      auto it = BFSStates.begin();
+      std::advance(it, index);
+      BFSStates.erase(it);
+      return *DFSStates.back();
+    }
+
+    return *DFSStates.back();
+  }
+}
+
+void BFSDFSSearcher::update(ExecutionState *current, const std::vector<ExecutionState *> &addedStates,
+                         const std::vector<ExecutionState *> &removedStates) {
+  if (runningBFS) {
+    BFSUpdate(current, addedStates, removedStates);
+  } else {
+    DFSUpdate(current, addedStates, removedStates);
+  }
+}
+
+void BFSDFSSearcher::DFSUpdate(ExecutionState *current,
+                         const std::vector<ExecutionState *> &addedStates,
+                         const std::vector<ExecutionState *> &removedStates) {
+
+  if (current->coveredNew)
+    instructions = stats::instructions;
+
+  DFSStates.insert(DFSStates.end(), addedStates.begin(), addedStates.end());
+
+  for (std::vector<ExecutionState *>::const_iterator it = removedStates.begin(), ie = removedStates.end(); it != ie; ++it) {
+    ExecutionState *es = *it;
+    if (es == DFSStates.back()) {
+      DFSStates.pop_back();
+    } else {
+      bool ok = false;
+
+      for (std::vector<ExecutionState*>::iterator it = DFSStates.begin(), ie = DFSStates.end(); it != ie; ++it) {
+        if (es==*it) {
+          DFSStates.erase(it);
+          ok = true;
+          break;
+        }
+      }
+
+      (void) ok;
+      assert(ok && "invalid state removed");
+    }
+  }
+
+  if (stats::instructions >= instructions + 10000) {
+    std::vector<ExecutionState*> statesToRemove;
+    std::vector<ExecutionState*> newDFSStates;
+
+    for (auto it = DFSStates.begin(); it != DFSStates.end(); it++) {
+      if ((*it)->coveredNew == false)
+        statesToRemove.push_back(*it);
+      else
+        newDFSStates.push_back(*it);
+    }
+
+    exe.removeFromStates(statesToRemove);
+    DFSStates = newDFSStates;
+
+ }
+}
+
+double BFSDFSSearcher::getMemoryPart() const {
+  return mMemoryPart;
+}
+
+bool BFSDFSSearcher::isRunningBFS() const {
+  return runningBFS;
+}
+
+int BFSDFSSearcher::findStateIndex()
+{
+  ExecutionState *es = *BFSStates.begin();
+
+  uint64_t minDistance;
+
+  minDistance = computeMinDistToUncovered(es->pc, es->stack.back().minDistToUncoveredOnReturn);
+
+  int index = 0;
+
+  auto start = BFSStates.begin();
+  auto begin = BFSStates.begin();
+  auto end = BFSStates.end();
+
+  std::advance(begin, 1);
+
+  uint64_t currentState;
+
+  while (begin != end) {
+    currentState = computeMinDistToUncovered((*begin)->pc, (*begin)->stack.back().minDistToUncoveredOnReturn);
+
+    if (currentState < minDistance) {
+      minDistance = currentState;
+      index = distance(start, begin);
+    }
+
+    begin++;
+  }
+
+  return index;
+}
+
+void BFSDFSSearcher::changeAlgorithm()
+{
+  exe.clearStates();
+  runningBFS = false;
+}
 
 ///
 
@@ -81,6 +208,41 @@ void DFSSearcher::update(ExecutionState *current,
       assert(ok && "invalid state removed");
     }
   }
+}
+
+void BFSDFSSearcher::BFSUpdate(ExecutionState *current,
+                         const std::vector<ExecutionState *> &addedStates,
+                         const std::vector<ExecutionState *> &removedStates) {
+
+    if (!addedStates.empty() && current &&
+        std::find(removedStates.begin(), removedStates.end(), current) == removedStates.end()) {
+        auto pos = std::find(BFSStates.begin(), BFSStates.end(), current);
+        assert(pos != BFSStates.end());
+        BFSStates.erase(pos);
+        BFSStates.push_back(current);
+    }
+
+    BFSStates.insert(BFSStates.end(), addedStates.begin(), addedStates.end());
+    for (std::vector<ExecutionState *>::const_iterator it = removedStates.begin(), ie = removedStates.end();
+         it != ie; ++it) {
+        ExecutionState *es = *it;
+        if (es == BFSStates.front()) {
+            BFSStates.erase(BFSStates.begin());
+        } else {
+            bool ok = false;
+
+            for (auto it = BFSStates.begin(), ie = BFSStates.end(); it != ie; ++it) {
+                if (es==*it) {
+                    BFSStates.erase(it);
+                    ok = true;
+                    break;
+                }
+            }
+
+            (void) ok;
+            assert(ok && "invalid state removed");
+        }
+    }
 }
 
 ///

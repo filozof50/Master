@@ -455,6 +455,10 @@ public:
     symPathWriter = tsw;
   }
 
+  void clearStates() { states.clear(); }
+  void removeFromStates(std::vector<ExecutionState *>states_to_remove);
+  int statesSize() { return states.size(); }
+
   void setReplayKTest(const struct KTest *out) override {
     assert(!replayPath && "cannot replay both buffer and path");
     replayKTest = out;
