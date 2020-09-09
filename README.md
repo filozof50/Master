@@ -9,7 +9,7 @@ Repozitorijum je organizovan u nekoliko direktorijuma:
   - kod, gde se nalazi osnovni kod alata KLEE koji je nadograđen novim algoritmom za pretragu stabla stanja.
   - testovi, gde se nalaze svi programi GNU Coreutils-a koji su korišćeni kao realni programi pri testiranju alata i na kojima su kasnije sprovedeni testovi za poređenje algoritma koji je opisan u radu sa algoritmima koji su predložili autori alata.
   - rezultati, gde se nalaze rezultati istraživanja. Direktorijum sadrži veći broj direktorijuma. Direktorijumi sa prefiksom covnew predstavljaju rezultate pokretanja algoritma koji predlažu autori alata, dok oni sa prefiksom my predstavljaju rezultate pokretanja programa sa algoritmom opisanim u radu.
-  
+
 # Instalacija
 
 Za korišćenje alata KLEE je neophodno instalirati sam alata. Uputstva se mogu naći na adresi http://klee.github.io/build-llvm38/. Verzija alata koja je nadograđena u ovom radu je stabilna verzija KLEE 2.1 iz marta 2020. godine. Kako bi bilo moguće koristiti algoritam BFS-DFS koji je opisan u radu potrebno je klonirati ovaj repozitorijum. Sva ostala uputstva za instalaciju su ista kao i na navedenoj adresi.
@@ -28,7 +28,7 @@ Pored ostalih parametara moguće je i dati specifikaciju o tome koju pretragu ž
 
 # Izlaz iz alata
 
-Kao izlaz iz alata se dobija direktorijum u kome se nalaze testovi koji odgovaraju putanjama koroz program koje su otkrivene simboličkim izvršavanjem. za svaku putanju su date vrednosti ulaznih podataka koje dovode do kretanja kroz istu. Da bi se pročitale ulazne vrednosti podataka koristi se ktest-tool ime_fajla.ktest pri čemu su fajlovi sa ekstenzijom .ktest automatski generisani od strane alata. Takođe se za svako pokretanje kreira direktorijum u kome se nalaze ovi testovi. Ukoliko se upotrebi komanda klee-stats ime_direktorijuma može se dobiti informacija o pokrivesnoti naredbi, pokrivesnoti grana u programu, vremenu izvršavanja, broju izvršenih LLVM instrukcija. 
+Kao izlaz iz alata se dobija direktorijum u kome se nalaze testovi koji odgovaraju putanjama koroz program koje su otkrivene simboličkim izvršavanjem. za svaku putanju su date vrednosti ulaznih podataka koje dovode do kretanja kroz istu. Da bi se pročitale ulazne vrednosti podataka koristi se ktest-tool ime_fajla.ktest pri čemu su fajlovi sa ekstenzijom .ktest automatski generisani od strane alata. Takođe se za svako pokretanje kreira direktorijum u kome se nalaze ovi testovi. Ukoliko se upotrebi komanda klee-stats ime_direktorijuma može se dobiti informacija o pokrivesnoti naredbi, pokrivesnoti grana u programu, vremenu izvršavanja, broju izvršenih LLVM instrukcija.
 
 # Primer pokretanja
 
@@ -37,4 +37,4 @@ Primer pokretanja alata za jedan od programa iz GNU Coreutils-a je:
 klee --simplify-sym-indices --write-cvcs --write-cov --output-module --max-memory=1000 --disable-inlining --optimize --use-forked-solver --use-cex-cache --libc=uclibc --posix-runtime --external-calls=all --only-output-states-covering-new --max-sym-array-size=4096 --max-time=720min --watchdog --max-memory-inhibit=false --max-static-fork-pct=1 --max-static-solve-pct=1 --max-static-cpfork-pct=1 --switch-type=internal --search=bfs-dfs -memory-part=0.4 -instructions-since-covered-new=10000 mv.bc --sym-args 0 1 10 --sym-args 0 2 2 --sym-files 1 8 --sym-stdin 8 --sym-stdout
 
 # Primer izlaza
-
+![Primer izlaza](rezultati/images/izlaz.png)
