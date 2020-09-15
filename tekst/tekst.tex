@@ -109,7 +109,7 @@
 
 % Apstrakt na srpskom jeziku (u odabranom pismu)
 \apstr{
-Statička verifikacija softvera je podoblast verifikacije softvera koja vrši statičku analizu napisanog koda. Ideja je da bez pokretanja samog koda bude moguće ustanoviti da li neke i koje ulazne vrednosti podataka mogu dovesti do grešaka u izvršavanju. Pored drugih tehnika statičke analize postoji i simboličko izvršavanje. Osnovni princip na kome počiva ova tehnika je razlikovanje promenljivih koje imaju dodeljenu vrednost kroz k\^od, i onih koje zavise od nekih spoljnih faktora (pozivi bazi, standardni ulaz, datoteke itd). Simboličko izvršavanje pokušava da analizira putanje kroz koje se može proći izvršavanjem programa, kreirajući stablo stanja koja se formiraju prolaskom kroz putanje. Za svaku putanju se proverava da li u njoj može doći do greške, i ako je to moguće ona se označava kao kritična. Moguće je odrediti i vrednosti ulaznih podataka koje mogu dovesti do greške. U ovom radu je nadograđen jedan od alata za simboličko izvršavanje, KLEE, koji je implementiran u programskom jeziku C++. Ovaj alat se koristi za statičku analizu programa koji su napisani u programskim jezicima C i C++. Alat je obogaćen novim algoritmom pretrage stabla stanja koja mogu nastati izvršavanjem programa. Poređenje predloženog algoritma sa algoritmima predloženim od strane autora alata je vršeno na programima koji su napisani u okviru GNU Coreutils-a (GNU skup alata). Rezultati su pokazali da predloženi pristup može u značajnoj meri da skrati vreme izvršavanja, pri čemu se ne gubi mnogo na pokrivenosti koda.
+Statička verifikacija softvera je podoblast verifikacije softvera u kojoj se vrši statička analiza napisanog koda. Ideja je da bez pokretanja samog koda bude moguće ustanoviti da li neke i koje ulazne vrednosti podataka mogu dovesti do grešaka u izvršavanju. Pored drugih tehnika statičke analize postoji i simboličko izvršavanje. Osnovni princip na kome počiva ova tehnika je razlikovanje promenljivih koje imaju dodeljenu vrednost kroz k\^od, i onih koje zavise od nekih spoljnih faktora (upotreba baze podataka, standardni ulaz, datoteke itd). Simboličko izvršavanje pokušava da analizira putanje kroz koje se može proći izvršavanjem programa, kreirajući stablo stanja koja se formiraju prolaskom kroz putanje. Za svaku putanju se proverava da li u njoj može doći do greške, i ako je to moguće ona se označava kao kritična. Moguće je odrediti i vrednosti ulaznih podataka koje mogu dovesti do greške. U ovom radu je nadograđen jedan od alata za simboličko izvršavanje, KLEE, koji je implementiran u programskom jeziku C++. Ovaj alat se koristi za statičku analizu programa koji su napisani u programskim jezicima C i C++. Alat je obogaćen novim algoritmom pretrage stabla stanja koja mogu nastati tokom izvršavanja programa. Poređenje predloženog algoritma sa algoritmima predloženim od strane autora alata je vršeno na programima koji su napisani u okviru GNU Coreutils-a (GNU skup alata). Rezultati su pokazali da predloženi pristup može u značajnoj meri da skrati vreme izvršavanja, pri čemu se ne gubi mnogo na pokrivenosti koda.
 }
 % Ključne reči na srpskom jeziku (u odabranom pismu)
 \kljucnereci{Verifikacija softvera, simboličko izvršavanje, KLEE, pretraga stabla izvršavanja programa}
@@ -140,7 +140,7 @@ Statička verifikacija softvera je podoblast verifikacije softvera koja vrši st
 Verifikacija softvera je danas jedna od najvažnijih oblasti računarstva. Sa napretkom tehnologije se i broj korisnika ubrzano povećava, tako da je vrlo značajno da aplikacije koje se koriste budu ispravne.
 
 \section{Verifikacija i validacija softvera}
-U današnje vreme softver je svuda oko nas. Postoji težnja ka tome da se što je moguće više poslova automatizuje. Takođe, teži se tome da se softverski olakšaju mnogi aspekti života (pametni telefoni, kuće). Softver je sveprisutan i u mnogim granama industrije (proizvodnja, automobili, avioni itd.) ali pomaže i u nekim veoma važnim, pa čak i kritičnim zanimanjima (otkrivanje raka i drugih smrtonosnih bolesti u medicini). Zbog ovolike rasporstranjenosti veoma je važno da softver bude kvalitetan i pouzdan. Usled postojanja grešaka u softveru dešavaju se nesreće (automobilske, avionske itd). Sem fatalnih ishoda i gubitka ljudskih života, greške u softveru vrlo često dovode i do gubitka ogromne količine novca. U delu \ref{sct:greske} će biti opisane neke poznate softverske greške koje su probudile svest o važnosti ispravnog softvera. 
+U današnje vreme softver je svuda oko nas. Postoji težnja ka tome da se što je moguće više poslova automatizuje. Takođe, teži se tome da se softverski olakšaju mnogi aspekti života (pametni telefoni, kuće). Softver je sveprisutan i u mnogim granama industrije (proizvodnja, automobili, avioni itd.) ali pomaže i u nekim veoma važnim, pa čak i kritičnim zanimanjima (otkrivanje raka i drugih smrtonosnih bolesti u medicini). Zbog ovolike rasprostranjenosti veoma je važno da softver bude kvalitetan i pouzdan. Usled postojanja grešaka u softveru dešavaju se nesreće (automobilske, avionske itd). Sem fatalnih ishoda i gubitka ljudskih života, greške u softveru vrlo često dovode i do gubitka ogromne količine novca. U delu \ref{sct:greske} će biti opisane neke poznate softverske greške koje su probudile svest o važnosti ispravnog softvera. 
 
 Dva važna koncepta u razvoju softvera su njegova validacija (eng. \textit{validation}) i verifikacija (eng. \textit{verification}). Validacija podrazumeva da projektna specifikacija softvera ispunjava korisničke potrebe. S druge strane, ukoliko je projektna specifikacija dobra, potrebno je da i ona bude ispunjena, odnosno da softver radi baš ono što u istoj piše. Ovo predstavlja verifikaciju softvera. Verifikacija odgovara na pitanja da li softver radi ono što treba, odnosno da li je u potpunosti ispravan. 
  
@@ -149,8 +149,6 @@ Greške u softveru se neretko javljaju. Kako ljudi pišu softver, greške su nem
 
 \begin{description}
 
-    \item \textbf{Mt. Gox} \cite{software_erros} - Japanski bitkoin (eng. \textit{bitcoin}) koji je nastao 2010. godine je bio najveći bitkoin na svetu. Nakon što je probijen njegov bezbednosni sistem u junu 2011. godine, Mt. Gox je izgubio preko 850,000 bitkoina koji su u tom trenutku vredeli oko pola milijarde dolara. Ljudi iz kompanije su priznali da su ogromne gubitke pretrpeli zato što su imali grešku u bezbednosnom sistemu ovog bitkoina.
-    
     \item \textbf{Ariane 5} \cite{arriane_5} - četvrtog juna 1996. godine raketa Arijana 5 (eng. \textit{Ariane 5}) je eksplodirala pri prvom lansiranju nakon samo 40 sekundi. Pravljenje softvera za raketu i same rakete je trajalo preko jedne decenije i koštalo je oko sedam milijardi dolara, a cena rakete je bila oko 500 miliona dolara. Uzrok ove nezgode je bio greška u softveru. Naime, 64-bitni broj u pokretnom zarezu je zapisan u promenljivu koja je bila označeni ceo broj, koja može da čuva broj 32,767 kao najveći. Broj koji je trebalo da bude zapisan je bio veći od ove vrednosti i došlo je do greške pri konverziji.
     
     \item \textbf{Therac 25} \cite{therac_25} - je bio aparat koji se koristio za lečenje raka emitovanjem radijacije. Tokom prvih nekoliko godina od početka rada ovog uređaja 1983. godine nije bilo nikakvih problema. Međutim 1985. i 1986. godine se dogodilo ukupno pet smrtnih slučajeva i jedan slučaj invaliditeta. Jedna od pacijenatkinja kojoj je bilo prepisano zračenje jačine 200 rada je bila ozračena jačinom između 10,000 i 20,000 rada.  
@@ -159,15 +157,15 @@ Greške u softveru se neretko javljaju. Kako ljudi pišu softver, greške su nem
 
 \section{Tehnike verifikacije softvera} \label{sct:tehnike}
 
-Dva osnovna pristupa verifikaciji softvera su statička i dinamička analiza, odnosno verifikacija. Osnovna razlika između ove dve tehnike je u tome što se dinamička verifikacija vrši tokom izvršavanja programa, odnosno neophodno je pokrenuti isti, dok statička verifikacija analizira k\^od i proverava ispravnost softvera bez njegovog pokretanja.
+Dva osnovna pristupa verifikaciji softvera su statička i dinamička analiza, odnosno verifikacija. Osnovna razlika između ove dve tehnike je u tome što se dinamička verifikacija vrši izvršavanjem programa, odnosno neophodno je pokrenuti isti, dok statička verifikacija analizira k\^od i proverava ispravnost softvera bez njegovog pokretanja.
 
 \subsection{Dinamička verifikacija softvera}
 Dinamička verifikacija softvera se odnosi na proveru ispravnosti softvera u fazi izvršavanja. Dakle, neophodno je kompajlirati k\^od, pokrenuti ga, i onda vršiti analizu. Dinamička verifikacija softvera se uglavnom vrši pisanjem testova pomoću kojih se proverava ispravnosti koda. Njih uglavnom pišu i sprovode testeri, međutim u nekim situacijama to rade i programeri. Tester mora da ima znanje programiranja kako bi pisao kvalitetne testove, da poznaje specifičnosti jezika, da razume softver koji se razvija, korisničke potrebe itd. Postoji više različitih vrsta i tehnika testiranja \cite{testing_book} \cite{testiranje}. 
 
 \subsection{Statička verifikacija softvera}
-Statička verifikacija softvera se odnosi na proveru ispravnosti koda bez njegovog pokretanja. K\^od nije potrebno kompajlirati niti pokretati kako bi bile proverene eventualne greške u njemu. Postoje dva načina statičke analize softvera.
+Statička verifikacija softvera se odnosi na proveru ispravnosti koda bez njegovog pokretanja. Kod statičke verifikacije softvera je umesto formalong pisanja testova potrebno formalno opisati specifikaciju samog softvera. K\^od nije potrebno kompajlirati niti pokretati kako bi bile proverene eventualne greške u njemu. Postoje dva načina statičke analize softvera.
 
-\paragraph{Pregledi koda} - tehnika statičke verifikacije softvera gde programeri pregledaju napisani k\^od pre nego što on može da bude dodat u glavni repozitorijum. Pregledima koda ne mogu biti otkrivene sve greške u kodu, ali postoje studije \cite{code_review} koje su pokazale da se broj grešaka značajno smanjuje ukoliko se koristi ova tehnika. Pregledi koda mogu da budu formalni, u vidu grupnih sastanaka gde se diskutuje napisani k\^od. Takođe, to mogu biti i neke neformalne metode kao što su programiranje u paru, pregledi preko mejla, prosto objašnjavanje šta je i zašto urađeno u kodu.
+\paragraph{Pregledi koda} - neformalna tehnika statičke verifikacije softvera gde programeri pregledaju napisani k\^od pre nego što on može da bude dodat u glavni repozitorijum. Pregledima koda ne mogu biti otkrivene sve greške u kodu, ali postoje studije \cite{code_review} koje su pokazale da se broj grešaka značajno smanjuje ukoliko se koristi ova tehnika. Pregledi koda mogu da budu formalni, u vidu grupnih sastanaka gde se diskutuje napisani k\^od. Takođe, još neke od često korišćenih tehnika su programiranje u paru, pregledi preko imejla, prosto objašnjavanje šta je i zašto urađeno u kodu.
 
 \paragraph{Automatska statička analiza koda} - tehnika statičke verifikacije softvera u kojoj postoje specijalizovani alati koji pomažu pri proveri ispravnosti koda. Postoji više tehnika koje se koriste u statičkoj analizi koda. 
 
@@ -186,7 +184,7 @@ opisani u poglavlju \ref{algoritam}. Rezultati poređenja rada algoritma sa rado
 % ------------------------------------------------------------------------------
 \chapter{Simboličko izvršavanje} \label{chp:simbolicko_izvrsavanje}
 
-\indent Simboličko izvršavanje je tehnika statičke verifikacije softvera, odnosno bavi se statičkom analizom koda. Jedna je od najkorišćenijih tehnika statičke verifikacije. Na primer, još od 2008. godine, nad većinom Majkrosoftovih (eng. \textit{Microsoft}) aplikacija se vrši verifikacija pomoću simboličkog izvršavanja, pre nego što aplikacije budu objavljene \cite{microsoft}. O efikasnosti ove tehnike govori činjenica da je 30\% grešaka u operativnom sistemu \textit{Windows 7} pronađeno baš na ovaj način, pri čemu su u pitanju greške koje nisu bile otkrivene korišćenjem drugih tehnika za statičku i dinamičku analizu softvera.
+\indent Simboličko izvršavanje je tehnika statičke verifikacije softvera, odnosno bavi se statičkom analizom koda. Jedna je od najkorišćenijih tehnika statičke verifikacije. Na primer, još od 2008. godine, nad većinom Majkrosoftovih (eng. \textit{Microsoft}) aplikacija se vrši verifikacija pomoću simboličkog izvršavanja, pre nego što aplikacije budu objavljene \cite{microsoft}. O efikasnosti ove tehnike govori činjenica da je 30\% grešaka u operativnom sistemu \textit{Windows 7} pronađeno baš na ovaj način, pri čemu su u pitanju greške koje nisu bile otkrivene korišćenjem drugih tehnika za statičku i dinamičku analizu softvera. Simboličko izvršavanje može da bude statičko i dinamičko, o čemu će biti reči u daljem tekstu.
 
 \section{Principi simboličkog izvršavanja}
 
@@ -262,10 +260,10 @@ Za razliku od konkretnog izvršavanja, simboličko izvršavanje može odjednom d
     \label{fig:osnovni_primer}
 \end{figure}
 
-Graf simboličkog izvršavanja može biti predstavljen stablom, što se je prikazano na slici \ref{fig:osnovni_primer}. Inicijalno u korenu stabla (stanje $A$) imamo formulu $\pi$ koja ima vrednost tačno (eng. \textit{true}), i promenljivima $a$ i $b$ su dodeljene simboličke vrednosti $\alpha_a$ i $\alpha_b$. Stanje $B$ odgovara prvoj naredbi unutar funkcije $foo$ u kojoj se promenljivima $x$ i $y$ dodeljuju vrednosti 1 i 0 redom, čime one postaju konkretne promenljive. U stanju $B$ se memorijski prostor $\sigma$ ažurira tako što se menjaju vrednosti promenljivih $x$ i $y$. Sledeća naredba je naredba grananja pa se stanje $B$ deli na dva stanja, $C$ i $D$. Stanja $C$ i $D$ odgovaraju uslovima $\alpha_a \neq 0$ i $\alpha_a = 0$ redom, što se može i videti na osnovu ažuriranja formule $\pi$ u odgovarajućim stanjima. Daljom analizom se može zaključiti da su stanja $D$, $G$ i $H$ završna stanja, tj. stanja u kojima se izvršava poslednja naredba funkcije $foo$. Jedina formula koja može dovesti do greške je ona u stanju $H$. Bilo koje ulazne vrednosti za simboličke promenljive $a$ i $b$ za koje važi
-\vskip 0.2in
+Graf simboličkog izvršavanja može biti predstavljen stablom, što se je prikazano na slici \ref{fig:osnovni_primer}. Inicijalno u korenu stabla (stanje $A$) imamo formulu $\pi$ koja ima vrednost tačno (eng. \textit{true}), i promenljivima $a$ i $b$ su dodeljene simboličke vrednosti $\alpha_a$ i $\alpha_b$. Stanje $B$ odgovara prvoj naredbi unutar funkcije \textit{foo} u kojoj se promenljivima $x$ i $y$ dodeljuju vrednosti 1 i 0 redom, čime one postaju konkretne promenljive. U stanju $B$ se memorijski prostor $\sigma$ ažurira tako što se menjaju vrednosti promenljivih $x$ i $y$. Sledeća naredba je naredba grananja pa se stanje $B$ deli na dva stanja, $C$ i $D$. Stanja $C$ i $D$ odgovaraju uslovima $\alpha_a \neq 0$ i $\alpha_a = 0$ redom, što se može i videti na osnovu ažuriranja formule $\pi$ u odgovarajućim stanjima. Daljom analizom se može zaključiti da su stanja $D$, $G$ i $H$ završna stanja, tj. stanja u kojima se izvršava poslednja naredba funkcije $foo$. Jedina formula koja može dovesti do greške je ona u stanju $H$. Bilo koje ulazne vrednosti za simboličke promenljive $a$ i $b$ za koje važi
+\vskip 0.1in
 \centerline{$2(\alpha_a + \alpha_b) - 4 = 0 \land \alpha_a \neq 0 \land \alpha_b = 0$}
-\vskip 0.2in
+\vskip 0.1in
 \noindent će dovesti do narušavanja uslova naredbe $assert$. Vrednosti koje bi dovele do greške se mogu odrediti pozivanjem $SMT$ rešavača, u datom primeru to su vrednosti \texttt{a = 2} i \texttt{b = 0}.
 
 \section{Metode simboličkog izvršavanja}
@@ -419,7 +417,7 @@ Na osnovu toga da li pokušavaju da obrade veći broj putanja odjednom ili jednu
 \begin{description}
     \item \textbf{\textit{online} alati} - alati koji pokušavaju da izvršavaju i izučavaju veći broj putanja odjednom. Kada god se naiđe na grananje vrši se kloniranje trenutnog stanja. Dobra strana ovih alata je što nema ponavljanja posla jer se jednom izvršena naredba nikada ne izvršava ponovo. Loša strana je to što veoma brzo pune memoriju koja im je dodeljena, jer moraju da održavaju veliki broj putanja i stanja. Na primer ako imamo uslov grananja $x > 3$, putanja se deli na dve disjunktne putanje. U jednoj će važiti $\pi \land x > 3$ a u drugoj negacija tog uslova, odnosno $\pi \land x \leq 3$. Na ovaj način se prolazi kroz obe putanje. Primeri ovakvih alata su KLEE \cite{klee}, AEG \cite{aeg}, S$^2$E \cite{s2e}.
     
-    \item \textbf{\textit{offline} alati} - za razliku od \textit{online} alata, \textit{offline} alati izvršavaju jednu po jednu putanju. Primer ovakvog alata je SAGE \cite{sage}. Ideja je izvršiti celu jednu putanju do samog kraja, a zatim preći na neku drugu. Dobra strana ovog pristupa je jako malo korišćenje memorije jer se čuvaju stanja vezana za samo jednu putanju, ali je problem što obično ima mnogo ponavljanja posla. Pretraga nove putanje uglavnom kreće od samog početka. Opšti princip rada \textit{offline} alata je da kreću sa konkretnim izvršavanjem, što znači da je potrebno generisati ulazne podatke. Pamti se put kojim se prošlo pri konkretnom izvršavanju, a zatim se isti put prolazi simbolički. 
+    \item \textbf{\textit{offline} alati} - za razliku od \textit{online} alata, \textit{offline} alati izvršavaju jednu po jednu putanju. Primer ovakvog alata je SAGE \cite{sage}. Ideja je izvršiti celu jednu putanju do samog kraja, a zatim preći na neku drugu. Dobra strana ovog pristupa je relativno malo korišćenje memorije jer se čuvaju stanja vezana za samo jednu putanju, ali je problem što obično ima mnogo ponavljanja posla. Pretraga nove putanje uglavnom kreće od samog početka. Opšti princip rada \textit{offline} alata je da kreću sa konkretnim izvršavanjem, što znači da je potrebno generisati ulazne podatke. Pamti se put kojim se prošlo pri konkretnom izvršavanju, a zatim se isti put prolazi simbolički. 
     
     \item \textbf{\textit{hibridni} alati} - hibridni alati kao što je Mayhem \cite{mayhem} pokušavaju da pronađu balans između prevelikog utroška memorije i vremena koje je potrebno za izvršavanje. Na početku počinju kao \textit{online} rešavači, a kada se memorija popuni do određene količine prelaze u \textit{offline} izvršavanje.
 \end{description}
@@ -428,7 +426,7 @@ Na osnovu toga da li pokušavaju da obrade veći broj putanja odjednom ili jednu
 
 U daljem tekstu će biti ukratko opisani alati koji simboličkim izvršavanjem vrše verifikaciju softvera.
 
-\paragraph{DART}\cite{dart} (eng. \textit{Directed Automated Random Testing}) je alat koji vrši dinamičko konkoličko simboličko izvršavanje. Za odabir uslova grananja koji će biti negiran kako bi se otkrila nova putanja se koristi algoritam pretrage u dubinu (DFS). DART je alat koji počiva na tri osnovna principa:
+\paragraph{DART}\cite{dart} (eng. \textit{Directed Automated Random Testing}) je alat koji koristi dinamičko konkoličko simboličko izvršavanje. Za odabir uslova grananja koji će biti negiran kako bi se otkrila nova putanja se koristi algoritam pretrage u dubinu (DFS). DART je alat koji počiva na tri osnovna principa:
 \begin{enumerate}
     \item\textit{Automatski} izdvaja interfejs programa statičkom analizom izvornog koda.
     
@@ -439,7 +437,7 @@ U daljem tekstu će biti ukratko opisani alati koji simboličkim izvršavanjem v
 
 \noindent DART se uglavnom koristi za testiranje programa napisanih u programskom jeziku \textit{C}.
 
-\paragraph{SAGE}\cite{sage} je alat koji vrši dinamičko simboličko izvršavanje. Za razliku od alata DART, SAGE koristi generacijsku pretragu. Osnovna ideja ovog alata je da sistematski, ali ipak delimično istraži prostor mogućih stanja softvera pri čemu se izbegava ponavljanje posla, a ujedno maksimizuje broj generisanih različitih testova. Pošto se izučava samo deo prostora stanja, ključan je izbor ulaznih vrednosti simboličkih promenljivih. Važnost inicijalnih vrednosti podseća na važnost istih kod tradicionalnog rasplinutog testiranja metodom crne kutije (eng. \textit{black-box fuzzy testing}), pa se stoga alati slični alatu SAGE često nazivaju rasplinutim testerima metodom bele kutije (eng. \textit{white-box fuzzy testers}). SAGE je primer \textit{offline} alata. 
+\paragraph{SAGE}\cite{sage} je alat koji koriste dinamičko simboličko izvršavanje. Za razliku od alata DART, SAGE koristi generacijsku pretragu. Osnovna ideja ovog alata je da sistematski, ali ipak delimično istraži prostor mogućih stanja softvera pri čemu se izbegava ponavljanje posla, a ujedno maksimizuje broj generisanih različitih testova. Pošto se izučava samo deo prostora stanja, ključan je izbor ulaznih vrednosti simboličkih promenljivih. Važnost inicijalnih vrednosti podseća na važnost istih kod tradicionalnog rasplinutog testiranja metodom crne kutije (eng. \textit{black-box fuzzy testing}), pa se stoga alati slični alatu SAGE često nazivaju rasplinutim testerima metodom bele kutije (eng. \textit{white-box fuzzy testers}). SAGE je primer \textit{offline} alata. 
 
 \paragraph{S$^2$E}\cite{s2e} je alat koji vrši selektivno simboličko izvršavanje. Jedan je od glavnih predstavnika \textit{online} alata. Pored ranije navedenih osobina treba napomenuti da se izbor narednog stanja koje se izvršava, samim tim i izbor putanje koja se izučava, vrši heuristikom vođenom pokrivenošću koda. 
 
@@ -464,7 +462,7 @@ KLEE čuva vrednosti različitih promenljivih u skladištima. Postoje dva skladi
 \begin{description}
     \item \textbf{konkretno} - skladište u okviru kog se čuvaju vrednosti konkretnih promenljivih. To su konstante ili promenljive kojima je dodeljena vrednost u kodu. Na primer, naredba \texttt{int x=5;} definiše jednu konkretnu promenljivu. Ukoliko se desi da se vrši dodela vrednosti konkretnoj promenljivoj kao rezultat izračunavanja u kome je učestvovala simbolička promenljiva, onda i konkretna promenljiva postaje simbolička. S druge strane, ukoliko se vrši neko izračunavanje nad simboličkom i konkretnom promenljivom, a rezultat se dodeljuje simboličkoj promenljivoj, to ne utiče na konkretnu promenljivu, i ona ostaje kakva je i bila pre ovog izračunavanja.
     
-    \item \textbf{simboličko} - skladište gde se čuvaju simboličke promenljive. Kako one nemaju konkretne vrednosti sve do trenutka kada se dođe u završno stanje, veći deo vremena se čuva samo njihova adresa. Kada se dođe u završno stanje, potrebno je generisati konkretne vrednosti simboličkih promenljivih na osnovu uslova koji važe u tom stanju. U tom trenutku one dobijaju konkretne vrednosti i generiše se test primer koji govori o tome koje su vrednosti promenljivih kada se program izvrši kretanjem kroz određenu putanju. Te vrednosti ne moraju biti jednistvene, npr ako u stanju važi uslov $x > 5$ promenljiva $x$ može uzeti bilo koju vrednost koja je veća od $5$. Ukoliko u nekom stanju dolazi do greške pod uslovom $x = 7$ onda će vrednost promenljive $x$ koja se generiše u tom stanju biti baš $7$.
+    \item \textbf{simboličko} - skladište gde se čuvaju simboličke promenljive. Kako one nemaju konkretne vrednosti sve do trenutka kada se dođe u završno stanje, veći deo vremena se čuva samo njihova adresa. Kada se dođe u završno stanje, potrebno je generisati konkretne vrednosti simboličkih promenljivih na osnovu uslova koji važe u tom stanju. U tom trenutku one dobijaju konkretne vrednosti i generiše se test primer koji govori o tome koje su vrednosti promenljivih kada se program izvrši kretanjem kroz određenu putanju. Te vrednosti ne moraju biti jednistvene, npr ako u stanju važi uslov $x > 5$ može biti dodeljena bio koja vrednost koja je veća od $5$. Ukoliko u nekom stanju dolazi do greške pod uslovom $x = 7$ onda će vrednost promenljive $x$ koja se generiše u tom stanju biti baš $7$.
 \end{description}
 \bigskip
 Količina radne memorije koja se dodeljuje samom alatu je ograničena i zadaje se kao jedan od parametara prilikom njegovog pokretanja. Zbog osobine alata da čuva sva stanja koja su vezana za sve putanje koje se izučavaju vrlo često dolazi do situacije gde se memorija popuni. Kada se ovo desi na neki način mora da dođe do ,,pražnjenja''. To se radi tako što se izbacuju neka stanja. Broj stanja koja se izbacuju se određuje metodom zasnovanom na slučajnim vrednostima. Generiše se pseudo-slučajan broj i on predstavlja broj stanja koja se izbacuju. 
@@ -478,7 +476,7 @@ Može se desiti da izvorni k\^od neke funkcije nije poznat, ili da je napisan u 
 
 \indent Kada je reč o petljama, KLEE ima prilično specifičan način rada. Naime, kako je alat potpuno simbolički, sve petlje se izvršavaju do kraja kroz sve potencijalne iteracije. Ako važi da je uslov izlaska iz petlje \texttt{i < n} gde je $n$ simbolička promenljiva, KLEE će pokušavati da prođe sve moguće iteracije. Ukoliko bi se znalo da je vrednost promenljive $n$ na primer $1000$ onda bi se petlja vrtela simbolički do vrednosti 1000. Međutim, kada je granica broja iteracija petlje simbolička promenljiva, KLEE nema mogućnost da izvrti određen broj iteracija i vidi ponašanje programa, već se ide do maksimalne vrednosti koju može da čuva promenljiva tipa koji odgovara tipu promenljive $n$. Iz ovog razloga KLEE ima veliki problem sa petljama bez obzira na to koji se algoritam koristi. Često u okviru petlji postoje grananja što dovodi do toga da se kreira veliki broj novih stanja u okviru njih. Na ovaj način se i memorija brže puni što dovodi do potrebe za ranije opisanim odbacivanjem nekih stanja. 
 
-Kada je reč o rekurzivnim funkcijama situacija je veoma slična : rekurzija se izvršava do uslova izlaska. Ukoliko uslov izlaska iz rekurzije zavisi od simboličke promenljive, javlja se isti problem kao i pri radu sa petljama.
+Kada je reč o rekurzivnim funkcijama situacija je veoma slična: rekurzija se izvršava do uslova izlaska. Ukoliko uslov izlaska iz rekurzije zavisi od simboličke promenljive, javlja se isti problem kao i pri radu sa petljama.
 
 \section{Rad sa pokazivačima i nizovima}
 Praćenje vrednosti pokazivača liči na rad sa pokazivačima u programskom jeziku C. Postoji poseban deo memorije koji se zove \textit{Known Symbolics} gde se smeštaju promenljive poslate funkciji preko pokazivača. Kada je promenljiva prosleđena preko pokazivača funkciji, nju je moguće menjati u okviru te funkcije. Ako je u pitanju simbolička promenljiva potrebno je znati koja simbolička promenljiva se ,,menja'', tj. koji dodatni uslovi za tu promenljivu treba da važe. Zato postoji pomenuti deo simboličkog skladišta koji čuva sve simboličke promenljive koje su uvedene do tad. Objekat pokazivačke promenljive koja se kreira prilikom poziva funkcije kao jedno od polja čuva i adresu promenljive na koju ,,pokazuje''. Na taj način je moguće u okviru dela \textit{Known Symbolics} menjati promenljivu, odnosno uslove koji važe za nju. Ukoliko je promenljiva koja se šalje preko pokazivača konkretna, onda se ,,prati'' adresa u okviru konkretnog skladišta i vrednost konkretne promenljive se menja.
@@ -495,9 +493,9 @@ Jedan od osnovnih algoritama pretrage grafa stanja u alatu KLEE je algoritam pre
 
 Ukoliko imamo stanje A u kome se vrši naredba grananja, u narednom koraku je potrebno da postoje dva stanja (B i C), jer postoji grananje koje može da odvede izvršavanje na dva različita puta. Interna implementacija algoritma pretrage u dubinu u okviru alata KLEE koristi niz pokazivača na stanja izvršavanja. Svaki put kada se naiđe na grananje u stanju A vrši se dodavanje stanja C na kraj niza, ali se stanje B ne kreira eksplicitno. Umesto toga KLEE vrši evoluciju stanja A. Dakle, jedno stanje evoluira i jedno stanje se dodaje na kraj niza stanja. 
 
-Kako bi se nad ovakvim grafom (na početku nemamo sve čvorove grafa, već se on formira dinamički) vršila pretraga u dubinu, uvek se za naredno stanje bira poslednje stanje iz niza, u prethodno opisanom primeru stanje C. U delu \ref{osnovni_algoritmi} će biti prikazan primer izvršavanja algoritma DFS gde će se videti kako ovaj algoritam radi u alatu KLEE. 
+Svaki put kada se odabere naredno stanje koje se izvršava ono ostaje u nizu stanja dok ne postane završno ili ne bude odbačeno iz nekog drugog razloga. Ukoliko nema grananja stanje evoluira. Evoluirano stanje ne menja svoju poziciju u nizu, već ostaje poslednje. Kada se dođe do završnog stanja ono se samo uklanja iz niza stanja i uzima se poslednje stanje koje ostaje u nizu kao naredno, čime se nastavlja pretraga stabla u dubinu. 
 
-Ukoliko u nekom stanju nema naredbe grananja, vrši se samo evolucija stanja. Ovo stanje ne menja svoju poziciju u nizu, već ostaje poslednje. Kada se dođe do završnog stanja ono se samo uklanja iz niza stanja i uzima se poslednje stanje koje ostaje u nizu kao naredno, čime se nastavlja pretraga stabla u dubinu. 
+Kako bi se nad ovakvim grafom (na početku nemamo sve čvorove grafa, već se on formira dinamički) vršila pretraga u dubinu, uvek se za naredno stanje bira poslednje stanje iz niza, u prethodno opisanom primeru stanje C. U delu \ref{osnovni_algoritmi} će biti prikazan primer izvršavanja algoritma DFS gde će se videti kako ovaj algoritam radi u alatu KLEE. 
 
 \subsection{Specifičnosti pretrage grafa u širinu u alatu KLEE} 
 Pored pretrage grafa u dubinu, u alatu KLEE je implementiran i algoritam pretrage grafa u širinu, odnosno BFS (algoritam je opisan u poglavlju \ref{BFS}).
@@ -538,7 +536,7 @@ Heuristike koje postoje u okviru alata KLEE su:
 \bigskip
 
 \subsection{Dodaci pretrazi} 
-Beč (eng. \textit{Batch}) predstavlja dodatak bilo kom od prethodno navedenih algoritama. Postoje dve opcije koje ovaj dodatak pruža:
+Paktena (eng. \textit{Batch}) obrada predstavlja dodatak bilo kom od prethodno navedenih algoritama. Postoje dve opcije koje ovaj dodatak pruža:
 \begin{itemize}
     \item Ako određeni broj naredbi bude izvršen bez otkrivanja nove naredbe, pređi na neku drugu putanju.
     
@@ -559,23 +557,12 @@ Alat KLEE se može pokrenuti iz komandne linije komandom \texttt{klee program.bc
     
     \item \textbf{assert} - Uslov proveravan funkcijom \textit{assert} nije tačan.
     
-    \item \textbf{ptr} - Čitanje ili pisanje u nevalidnu memorijsku lokaciju.
+    \item \textbf{ptr} - Čitanje ili pisanje u nevalidnu memoriju.
     
-    \item \textbf{free} - Dupli ili nekorektan poziv funkcije \textit{free}.
+    \item \textbf{free} - Ponovljen ili nekorektan poziv funkcije \textit{free}.
 \end{description}
 
 Takođe, kao izlaz je moguće dobiti i informacije o broju izvršenih naredbi, utrošenom vremenu, procentu pokrivenosti naredbi u kodu, procentu pokrivenosti grana u kodu, ukupnom broju LLVM instrukcija koje postoje u bajt kodu i vreme koje je bilo utrošeno za rešavanje ograničenja SMT rešavačem. Kako bi se navedeni podaci dobili u obliku koji je prikazan na slici \ref{fig:covnew_mkdir}, potrebno je izvršiti komandu \texttt{klee-stats ime\_direktorijuma}, gde \texttt{ime\_direktorijuma} predstavlja naziv direktorijuma koji je KLEE kreirao prilikom simboličkog izvršavanja. Ime odgovarajućeg direktorijuma na slici \ref{fig:covnew_mkdir} je \texttt{covnew\_mkdir}.
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=\linewidth]{covnew_mkdir.png}
-    \caption{Izlaz alata KLEE za izvršavanje komande \textit{mkdir} GNU Coreutils-a.}
-    \label{fig:covnew_mkdir}
-\end{figure}
-
-Prilikom pokretanja alata je moguće navesti i dodatne argumente. Pomoću njih se može precizirati koji se algoritam za simboličko izvršavanje koristi, kolika je maksimalna količina memorije koja će biti dodeljena alatu KLEE, maksimalno vreme izvršavanja. Takođe se programu koji se izvršava mogu proslediti simbolički argumenti, može se zahtevati da se kao izlaz generišu samo one putanje na kojima je bilo novootkrivenih naredbi. Još jedan zanimljiv parametar je onaj kojim se alatu poručuje da li da izvršava eksterne funkcije ili ne. 
-
-Pored navedenih parametara, postoje i mnogi drugi koji se mogu proslediti kao argumenti alatu prilikom pokretanja. Više o njima se može naći na \url{http://klee.github.io}. Primer pokretanja alata KLEE za program \textit{mkdir}, za čije izvršavanje je generisan izlaz prikazan na slici \ref{fig:covnew_mkdir} je dat listingom \ref{lst:pokretanje_klee}.
 
 \begin{lstlisting}[caption={Primer pokretanja alata KLEE}, label={lst:pokretanje_klee}, captionpos=b]
 klee --write-cvcs --write-cov --max-memory=1000 external-calls=all
@@ -586,15 +573,19 @@ klee --write-cvcs --write-cov --max-memory=1000 external-calls=all
 --sym-stdin 8 --sym-stdout
 \end{lstlisting}
 
-\section{Primeri rada osnovnih algoritama u okviru alata KLEE} \label{osnovni_algoritmi}
-U ovom delu će biti prikazan rad algoritama DFS i BFS na primeru koji je dat u listingu \ref{lst:primer_KLEE}. Prikazani k\^od je napisan radi ilustracije rada algoritama i ne predstavlja deo realnog, većeg softvera. Na slici \ref{fig:moj_primer} je prikazano stablo stanja koje odgovara ovom kodu. 
+Prilikom pokretanja alata je moguće navesti i dodatne argumente. Pomoću njih se može precizirati koji se algoritam za simboličko izvršavanje koristi, kolika je maksimalna količina memorije koja će biti dodeljena alatu KLEE, maksimalno vreme izvršavanja. Takođe se programu koji se izvršava mogu proslediti simbolički argumenti, može se zahtevati da se kao izlaz generišu samo one putanje na kojima je bilo novootkrivenih naredbi. Još jedan zanimljiv parametar je onaj kojim se alatu poručuje da li da izvršava eksterne funkcije ili ne. 
+
+Pored navedenih parametara, postoje i mnogi drugi koji se mogu proslediti kao argumenti alatu prilikom pokretanja. Više o njima se može naći na \url{http://klee.github.io}. Primer pokretanja alata KLEE za program \textit{mkdir}, za čije izvršavanje je generisan izlaz prikazan na slici \ref{fig:covnew_mkdir} je dat listingom \ref{lst:pokretanje_klee}.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=\linewidth]{stablo_primer_2.png}
-    \caption{Stablo stanja simboličkog izvršavanja koje odgovara primeru \ref{lst:primer_KLEE}. Zelenom bojom su označena završna stanja.}
-    \label{fig:moj_primer}
+    \includegraphics[width=\linewidth]{covnew_mkdir.png}
+    \caption{Izlaz alata KLEE za izvršavanje komande \textit{mkdir} GNU Coreutils-a.}
+    \label{fig:covnew_mkdir}
 \end{figure}
+
+\section{Primeri rada osnovnih algoritama u okviru alata KLEE} \label{osnovni_algoritmi}
+U ovom delu će biti prikazan rad algoritama DFS i BFS na primeru koji je dat u listingu \ref{lst:primer_KLEE}. Prikazani k\^od je napisan radi ilustracije rada algoritama i ne predstavlja deo realnog, većeg softvera. Na slici \ref{fig:moj_primer} je prikazano stablo stanja koje odgovara ovom kodu. 
 
 \begin{figure}
 \noindent\begin{minipage}[t]{.45\textwidth}
@@ -655,6 +646,12 @@ U ovom delu će biti prikazan rad algoritama DFS i BFS na primeru koji je dat u 
 \captionof{lstlisting}{Primer koda pomoću koga će biti objašnjeno simboličko izvršavanje u alatu KLEE}
 \label{lst:primer_KLEE}
 \end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{stablo_primer_2.png}
+    \caption{Stablo stanja simboličkog izvršavanja koje odgovara primeru \ref{lst:primer_KLEE}. Zelenom bojom su označena završna stanja.}
+    \label{fig:moj_primer}
+\end{figure}
 
 \begin{figure}[ht]
     \centering
@@ -678,14 +675,14 @@ Na slici \ref{fig:DFS_stanja} je prikazano na koji način se menja niz stanja iz
 Zbog drugačije prirode algoritma i niz stanja se prilikom pretrage stabla stanja u širinu menja drugačije u odnosnu na pretragu u dubinu. Ako pogledamo kako se na slici \ref{fig:BFS_stanja} menja red koji čuva stanja koja se izvršavaju vidimo da se kreće iz stanja 1. Zatim stanje 1 evoluira u stanje 2 i na kraj reda se dodaje stanje 3. Sledeće stanje koje se uzima je upravo 2, koje dalje evoluira u stanje 4. Takođe se dodaje novo stanje 5. Stanje 3 mora da ostane na početku reda kako bi bilo naredno izvršeno jer je u pitanju algoritam BFS i potrebno je prvo izvršiti sva stanja na jednom nivou stabla, pa tek onda preći na naredni. Od stanja 3 se dobijaju stanja 6 i 7 koji idu na kraj reda. Sledeće stanje čija će se naredba izvršiti je stanje 4, od koga nastaju 8 i 9. Postupak se nastavlja na prikazani način sve dok u redu ne ostanu samo završna stanja (8 - 15). U tom trenutku će se sva završna stanja izvršiti redom i biti izbacivana iz reda u redosledu izvršavanja. Pošto iz završnog stanja nema gde da se ode dalje, ono se samo izbacuje, time se putanja završava i prelazi se na naredno stanje  koje treba izvršiti.
 % ------------------------------------------------------------------------------
 \chapter{Ideja i implementacija algoritma BFS-DFS} \label{algoritam}
-U ovom delu će biti opisan algoritam kojim je unapređen alat KLEE. Rezultati ovog algoritma će biti upoređeni sa rezultatima algoritma koji autori alata preporučuju kao \textit{najbolji}. Najbolji se u ovom kontekstu odnosi na algoritam koji postiže najveću moguću pokrivenost koda, uz razumno vreme izvršavanja. Poređenje rada ova dva algoritma je vršeno na korpusu programa koji je korišćen u okviru evaluacije samog rada \cite{klee}. U pitanju su netrivijalni programi, što pruža infomraciju o tome kako se alat ponaša prilikom provere ispravnosti realnog softvera. Implementacija algoritma BFS-DFS kao i korpusi korišćeni u evaluaciji se mogu naći na adresi \url{https://github.com/filozof50/Master}.
+U ovom delu će biti opisan algoritam kojim je unapređen alat KLEE. Rezultati ovog algoritma će biti upoređeni sa rezultatima algoritma koji autori alata preporučuju kao \textit{najbolji}. Najbolji se u ovom kontekstu odnosi na algoritam koji postiže najveću moguću pokrivenost koda, uz razumno vreme izvršavanja. Poređenje rada ova dva algoritma je vršeno na korpusu programa koji je korišćen u okviru evaluacije samog rada \cite{klee}. U pitanju su netrivijalni programi, što pruža informaciju o tome kako se alat ponaša prilikom provere ispravnosti realnog softvera. Implementacija algoritma BFS-DFS kao i korpusi korišćeni u evaluaciji se mogu naći na adresi \url{https://github.com/filozof50/Master}.
 
 \section{Ideja algoritma} \label{ideja_algoritma}
 Algoritam kojim je unapređen alat KLEE predstavlja kombinaciju dva grafovska algoritma. U pitanju su pretraga grafa u širinu (BFS) i pretraga grafa u dubinu (DFS). Kako u simboličkom izvršavanju postoji stablo stanja, ideja je upotrebiti neki algoritam pretrage grafa kako bi se izvršilo što više naredbi koje se čuvaju u okviru stanja izvršavanja. Cilj je iskoristiti dobre strane ova dva algoritma, a u najvećoj mogućoj meri anulirati njihove mane. 
 
 BFS algoritam u ranoj fazi izvršavanja može otkriti neke anomalije u programu jer ide u širinu, međutim iz toga razloga i brzo puni memoriju. S druge strane DFS algoritmom je zauzeće memorije znatno manje, međutim problem predstavlja što se svaka putanja izučava do kraja. 
 
-Ideja BFS-DFS algoritma je da se prvo krene pretragom u širinu, čime bi se stablo stanja u velikoj meri ,,razgranalo'' i bio bi začet veliki broj različitih putanja. Kako se memorija ne bi prepunila (usled čega dolazi do odbacivanja velikog broja stanja), u nekom trenutku se prelazi na DFS pretragu čime se putanje izučavaju do kraja. Prelazak sa algoritma pretrage u širinu na pretragu u dubinu se vrši nakon što je popunjen određeni procenat memorije koja je dodeljena alatu KLEE. Procenat memorije nakon kog se prelazi na pretragu u dubinu se zadaje parametrom, prilikom pokretanja alata. 
+Ideja BFS-DFS algoritma je da se prvo krene pretragom u širinu, čime bi se stablo stanja u velikoj meri ,,razgranalo'' i bio bi začet veliki broj različitih putanja. Kako se memorija ne bi prepunila (usled čega dolazi do odbacivanja velikog broja stanja), u nekom trenutku se prelazi na DFS pretragu čime se putanje izučavaju do kraja. Prelazak sa algoritma pretrage u širinu na pretragu u dubinu se vrši nakon što je popunjen određeni procenat radne memorije koja je dodeljena alatu KLEE. Procenat memorije nakon kog se prelazi na pretragu u dubinu se zadaje parametrom, prilikom pokretanja alata, kao i procenat ukupne memorije koja se dodeljuje alatu za rad.
 
 U trenutku prelaska na DFS algoritam, stablo stanja je razgranato i započeto je izučavanje nekih putanja. Prelaskom na pretragu grafa u dubinu bi trebalo da se sve putanje izuče do kraja, jedna po jedna. Dakle, odabere se jedno stanje, i iz njega se pokreće pretraga u dubinu koja izučava putanju do samog kraja. Stanje iz kog se pokreće pretraga u dubinu je ono koje je najbliže nekoj naredbi koja do tada nije bila izvršena. Opravdanje za ovakav pristup leži u činjenici da je i vreme ograničeno, tj. da se prilikom pokretanja alata KLEE zadaje vreme u kome izvršavanje mora biti završeno. U suprotnom se izvršavanje prekida usled prekoračenja vremena. Ukoliko se uvek pri pokretanju pretrage u dubinu iz nekog stanja, tj. za neku putanju, bira stanje na opisani način, veće su šanse da će biti otkrivena neka nova naredba i samim tim će se povećati pokrivenost koda. 
 
@@ -700,7 +697,7 @@ Ovo se radi po ugledu na odbacivanje stanja koje predlažu autori alata, koji ta
       DFS_stanja.dodaj_na_kraj(skup_novih_stanja)
       DFS_stanja.ukloni(skup_stanja_koja_treba_izbaciti)        
             
-      if broj_izvrsenih_naredbi_bez_otrkivanja_nove_naredbe > 
+      if broj_izvrsenih_naredbi_bez_otkrivanja_nove_naredbe > 
          unapred_zadata_granica:
            for stanje u DFS_stanja:
              if !stanje.otkrivena_nova_naredba:
@@ -718,7 +715,8 @@ Nakon što se izvrši naredba u okviru stanja i ažurira skup aktivnih stanja, v
                                              nova_stanja,
                                     stanja_koja_treba_izbaciti):
       if popunjena_memorija >= memorija_dodeljena_alatu:
-        X = slucajan_broj(0, aktivna_stanja.velicina())
+        broj_stanja = aktivna_stanja.velicina()
+        X = slucajan_broj(1, broj_stanja - broj_stanja * memorija_dodeljena_alatu / popunjena_memorija)
 
         while X > 0:
           Y = slucajan_broj(0, aktivna_stanja.velicina())
@@ -749,8 +747,8 @@ Prvi korak je odabrati naredno stanje čija će naredba biti izvršena. Naredno 
             
       while aktivna_stanja.velicina() > 0:
         stanje = odaberi_stanje()
-        nova_stanja, 
-          stanja_koja_treba_izbaciti = izvrsi_naredbu(stanje)
+        {nova_stanja, 
+          stanja_koja_treba_izbaciti} = izvrsi_naredbu(stanje)
                 
         regulisi_iskoriscenost_memorije(aktivna_stanja, 
                                         nova_stanja,
@@ -780,7 +778,7 @@ Nakon što se odabere naredno stanje, izvršava se naredba koja se nalazi u tom 
     function izvrsi_naredbu(stanje):
       izvrsi(stanje.trenutna_naredba)
       
-      nova_stanja, stanja_koja_treba_izbaciti
+      {nova_stanja, stanja_koja_treba_izbaciti}
       
       if stanje.jeste_grananje():
         evoulirano_stanje, novo_stanje = izvrsi_grananje(stanje)
@@ -942,7 +940,7 @@ GNU Coreutils predstavlja skup alata za rad sa fajlovima, manipulaciju tekstom, 
 \subsection{Izbor parametara}
 Na osnovu predloga autora \cite{klee}, alatu je dato 1000 megabajta memorije za izvršavanje. Maksimalno vreme izvršavanja je 12 sati. Svi eksperimenti su izvršavani na računaru sa procesorom Intel(R) Core(TM) i7-8550U od 1.80GHz, sa 8GB RAM memorije i sa operativnim sistemom LinuxMint 19.
 
-Eksperimantalnim putem je pokazano da su najbolji parametri za pokretanje algoritma BFS-DFS 40\% za memoriju nakon čije popunjenosti se prelazi na pretragu u dubinu i 10000 za broj naredbi nakon kojih se vrši izbacivanje DFS stanja ukoliko nije bilo otkrivanja nove naredbe. Ukoliko se procenat zauzeća memorije poveća na preko 80\% dolazi do izbacivanja stanja usled potpunog zauzeća memorije. Eksperimenti su vršeni sa 85\%, 80\%, 67\%, 60\%, 40\% i 20\% popunjenosti memorije nakon koje dolazi do promene algoritma sa pretrage u širinu na pretragu u dubinu. Za sve vrednosti ovog parametra koje su bile različite od 40\% je pokrivenost koda bila manja u odnosu na pokretanja sa vrednošću parametra koja se pokazala najboljom. Vrednosti koje su testirane za broj naredbi su 5000, 7000, 10000 i 15000. Vrednosti manje od 10000 su dovodile od manje pokrivenosti koda, dok je veća vrednost popravljala pokrivenost neznatno uz značajno veći utrošak vremena.
+Eksperimentalnim putem je pokazano da algoritam BFS-DFS daje najbolje rezultate ukoliko se za procenat popunjenosti memorije nakon čijeg popunjavanja se prelazi na pretragu u dubinu prosledi 40\% i ako se za za broj naredbi nakon kojih se vrši izbacivanje DFS stanja ukoliko nije bilo otkrivanja nove naredbe prilikom pokretanja prosledi 10000. Ukoliko se procenat zauzeća memorije poveća na preko 80\% dolazi do izbacivanja stanja usled potpunog zauzeća memorije. Eksperimenti su vršeni sa 85\%, 80\%, 67\%, 60\%, 40\% i 20\% popunjenosti memorije nakon koje dolazi do promene algoritma sa pretrage u širinu na pretragu u dubinu. Za sve vrednosti ovog parametra koje su bile različite od 40\% je pokrivenost koda bila manja u odnosu na pokretanja sa vrednošću parametra koja se pokazala najboljom. Vrednosti koje su testirane za broj naredbi su 5000, 7000, 10000 i 15000. Vrednosti manje od 10000 su dovodile do manje pokrivenosti koda, dok je veća vrednost popravljala pokrivenost neznatno uz značajno veći utrošak vremena.
 
 Eksperimentalno je pokazano da uz ovakav izbor parametara na odabranom korpusu programa nikada ne dolazi do popunjavanja memorije u potpunosti, odnosno da se stanja izbacuju iz skupa aktivnih samo DFS algoritmom na opisani način.
 
@@ -983,38 +981,90 @@ Na slici \ref{fig:poredjenje_instrukcija} se mogu videti rezultati poređenja po
 \end{figure}
 
 \newpage
-Rezultati sprovedenog istraživanja i poređenja algoritma BFS-DFS sa algoritmom koji su predložili autori rada\cite{klee} su pokazali da je predloženim pristupom, gde se kombinuju pretraga grafa u širinu (da bi se stablo što brže razgranalo) i pretraga grafa u dubinu (kako bi se putanje izučile što dublje je moguće), može uštedeti na vremenu pri čemu se ne gubi previše na pokrivenosti koda. U tabeli \ref{tab:tabela_rezultata} se mogu videti razlike vremena, kao i pokrivenosti naredbi i grana za algoritme BFS-DFS i slučajne pretrage sa heuristikom.
+Rezultati sprovedenog istraživanja i poređenja algoritma BFS-DFS sa algoritmom koji su predložili autori rada\cite{klee} su pokazali da je predloženim pristupom, gde se kombinuju pretraga grafa u širinu (da bi se stablo što brže razgranalo) i pretraga grafa u dubinu (kako bi se putanje izučile što dublje je moguće), može uštedeti na vremenu pri čemu se ne gubi previše na pokrivenosti koda. U tabeli \ref{tab:tabela_naredbe} se mogu apsolutne vrednosti i razlike za pokrivenost naredbi prilikom izvršavanja slučajne pretrage sa heuristikom i algoritma BFS-DFS, dok tabela \ref{tab:tabela_grane} predstavlja iste ove vrednosti za pokrivenost grana. Apsolutne vrednosti vremena izvršavanja i razlike za navedene algoritme su prikazane u tabeli \ref{tab:tabela_vreme}.
 
 \begin{table}
 {\rowcolors{3}{gray!80!white!40}{gray!80!white!65}
-\begin{tabular}[caption={Osnovni primer simboličkog izvršavanja},captionpos=b,label={lst:tabela_rezultata}]{ |M{2cm}||M{2.5cm}|M{4.3cm}|M{4.3cm}| }
+\begin{tabular}[caption={Osnovni primer simboličkog izvršavanja},captionpos=b,label={lst:tabela_rezultata}]{ |M{2cm}||M{3.7cm}|M{3.7cm}|M{3.7cm}| }
  \hline
  \multicolumn{4}{|c|}{Rezultati poređenja algoritama} \\
  \noalign{\global\arrayrulewidth=0.2mm}
  \hline
- Komanda& Razlika u vremenu (s)& Razlika u pokrivenosti naredbi (\%) & Razlika u pokrivenosti grana (\%)\\
+ Komanda& Pokrivenost naredbi u \%(slučajna pretraga)& Pokrivenost naredbi u \%(BFS-DFS)& Razlika u pokrivenosti naredbi (\%) \\
  \hline
- chown& \textbf{-8037.34}& -7.48& -6.63 \\ \arrayrulecolor{black}\hline
- cp& \textbf{-2607.58}& -5.15& -4.97 \\\hline
- echo& \textbf{-2428.85}& \textbf{0.2}& \textbf{0.14} \\\hline
- false& 0.11& \textbf{0.22}& \textbf{0.16} \\\hline
- kill& \textbf{-42099.65}& \textbf{2.14}& \textbf{0.24} \\\hline
- logname& \textbf{-2933.87}& -0.35& -0.31 \\ \hline
- mkdir& \textbf{-8579.38}& -0.51& -0.38 \\ \hline
- nice& \textbf{-3888.14}& \textbf{0.36}& \textbf{0.34} \\ \hline
- printf& \textbf{-19599.61}& -2.26& -3.26 \\ \hline
- pwd& 0.12& \textbf{0.36}& \textbf{0.33} \\ \hline
- touch& \textbf{-27890.6}& -5.24& -5.57 \\ \hline
- true& 0.1& \textbf{0.22}& \textbf{0.16} \\
+ chown& 51.64&44.16& -7.48 \\ \arrayrulecolor{black}\hline
+ cp& 45.32&40.17& -4.97 \\\hline
+ echo& 40.78& 40.98& \textbf{0.2} \\\hline
+ false& 39& 39.22& \textbf{0.22} \\\hline
+ kill& 47.13& 49.27& \textbf{2.14} \\\hline
+ logname& 42.52& 42.17& -0.35 \\ \hline
+ mkdir& 47.82& 47.31 &-0.51 \\ \hline
+ nice& 43.66& 44.02& \textbf{0.36} \\ \hline
+ printf& 47.38& 45.12& -2.26 \\ \hline
+ pwd& 38.02& 38.38& \textbf{0.36} \\ \hline
+ touch& 48.61& 43.37& -5.24 \\ \hline
+ true& 39& 39.22& \textbf{0.22} \\
  \hline
 \end{tabular}}
-\caption{\label{tab:tabela_rezultata}Poređenje algoritama na podskupu programa iz skupa GNU Coreutils alata. Tabela predstavlja poređenje algoritma BFS-DFS u odnosu na slučajnu pretragu sa heuristikom. Svaka vrednost je dobijena oduzimanjem vrednosti za slučajnu pretragu od njoj odgovarajuće vrednosti koja je dobijena algoritmom BFS-DFS. Podebljane vrednosti pokazuju gde je algoritam BFS-DFS bio bolji u odnosu na slučajnu pretragu sa heuristikom.}
+\caption{\label{tab:tabela_naredbe}Poređenje algoritama na podskupu programa iz skupa GNU Coreutils alata. Tabela predstavlja poređenje algoritma BFS-DFS u odnosu na slučajnu pretragu sa heuristikom. U tabeli se vidi ukupna pokrivenost grana za svaki od algoritama kao i razlika ovih pokrivenosti u procentima. Svaka vrednost je dobijena oduzimanjem vrednosti za slučajnu pretragu od njoj odgovarajuće vrednosti koja je dobijena algoritmom BFS-DFS. Podebljane vrednosti pokazuju gde je algoritam BFS-DFS bio bolji u odnosu na slučajnu pretragu sa heuristikom.}
+\end{table}
+
+\begin{table}
+{\rowcolors{3}{gray!80!white!40}{gray!80!white!65}
+\begin{tabular}[caption={Osnovni primer simboličkog izvršavanja},captionpos=b,label={lst:tabela_rezultata}]{ |M{2cm}||M{3.7cm}|M{3.7cm}|M{3.7cm}| }
+ \hline
+ \multicolumn{4}{|c|}{Rezultati poređenja algoritama} \\
+ \noalign{\global\arrayrulewidth=0.2mm}
+ \hline
+ Komanda& Pokrivenost grana u \%(slučajna pretraga)& Pokrivenost grana u \%(BFS-DFS)& Razlika u pokrivenosti grana (\%)\\
+ \hline
+ chown& 36.15& 29.52& -6.63 \\ \arrayrulecolor{black}\hline
+ cp& 31.66& 26.69& -4.97 \\\hline
+ echo& 27.05& 27.19& \textbf{0.14} \\\hline
+ false& 24.63& 24.79& \textbf{0.16} \\\hline
+ kill& 33.3& 34.54& \textbf{0.24} \\\hline
+ logname& 27.81& 27.5& -0.31 \\ \hline
+ mkdir& 32.42& 32.04 & -0.38 \\ \hline
+ nice& 29.19& 29.53& \textbf{0.34} \\ \hline
+ printf& 36.11& 32.85& -3.26 \\ \hline
+ pwd& 24.31& 24.64& \textbf{0.33} \\ \hline
+ touch& 34.64& 29.07& -5.57 \\ \hline
+ true& 24.63& 24.79& \textbf{0.16} \\
+ \hline
+\end{tabular}}
+\caption{\label{tab:tabela_grane}Poređenje algoritama na podskupu programa iz skupa GNU Coreutils alata. Tabela predstavlja poređenje algoritma BFS-DFS u odnosu na slučajnu pretragu sa heuristikom. U tabeli se vidi ukupna pokrivenost grana za svaki od algoritama kao i razlika ovih pokrivenosti u procentima. Svaka vrednost je dobijena oduzimanjem vrednosti za slučajnu pretragu od njoj odgovarajuće vrednosti koja je dobijena algoritmom BFS-DFS. Podebljane vrednosti pokazuju gde je algoritam BFS-DFS bio bolji u odnosu na slučajnu pretragu sa heuristikom.}
+\end{table}
+
+\begin{table}
+{\rowcolors{3}{gray!80!white!40}{gray!80!white!65}
+\begin{tabular}[caption={Osnovni primer simboličkog izvršavanja},captionpos=b,label={lst:tabela_rezultata}]{ |M{1.8cm}||M{4.5cm}|M{4cm}|M{2.8cm}| }
+ \hline
+ \multicolumn{4}{|c|}{Rezultati poređenja algoritama} \\
+ \noalign{\global\arrayrulewidth=0.2mm}
+ \hline
+ Komanda& Ukupno vreme izvršavanja u sekundama (slučajna pretraga sa heuristikom)& Ukupno vreme izvršavanja u sekundama (BFS-DFS)& Razlika u vremenu (\%)\\
+ \hline
+ chown& 19066.11& 12028.77& \textbf{63.09}\\ \arrayrulecolor{black}\hline
+ cp& 10913.03& 8305.45&  \textbf{76.11}\\\hline
+ echo& 2662.95& 234.1&  \textbf{8.79}\\\hline
+ false& 0.85& 0.96&  112.94\\\hline
+ kill& TO& 1100.35&  \\\hline
+ logname& 13156.1& 10222.23& \textbf{77.7} \\ \hline
+ mkdir& 16835.47& 8256.09&  \textbf{49.04}\\ \hline
+ nice& 11266.8& 7378.66& \textbf{65.5} \\ \hline
+ printf& 35288.03& 15688.42& \textbf{44.46} \\ \hline
+ pwd& 2.13& 2.25& 105.63 \\ \hline
+ touch& TO& 15309.4&  \\ \hline
+ true& 0.85& 0.95& 111.76 \\
+ \hline
+\end{tabular}}
+\caption{\label{tab:tabela_vreme}Poređenje algoritama na podskupu programa iz skupa GNU Coreutils alata. Tabela predstavlja poređenje algoritma BFS-DFS u odnosu na slučajnu pretragu sa heuristikom. U tabeli se vidi ukupno vreme izvršavanja za ova dva algoritma kao i razlika vremena. Vrednost TO predstavlja prekoračenje vremena izvršavanja koje je bilo dodeljeno alatu KLEE, od 12 sati. Razlika vremena je izražena u procentima. Svaka vrednost je dobijena tako što je računato koliko procenata vremena utrošenog na slučajnu pretragu sa heuristikom je vreme utrošeno na izvršavanje algoritma BFS-DFS. Na mestima gde razlika nije navedena, razlog je što nije poznato tačno vreme izvršavanja algoritma slučajne pretrage sa heuristikom jer je došlo do prekoračenja vremena. Podebljane vrednosti pokazuju gde je algoritam BFS-DFS bio bolji u odnosu na slučajnu pretragu sa heuristikom.}
 \end{table}
 
 % ------------------------------------------------------------------------------
 \chapter{Zaključak}
 % ------------------------------------------------------------------------------
-    U ovom radu su opisane opšte tehnike i načini verifikacije softvera sa posebnim osvrtom na statičku verifikaciju softvera, konkretno na simboličko izvršavanje. Simboličko izvršavanje je jedna od danas često 
+U ovom radu su opisane opšte tehnike i načini verifikacije softvera sa posebnim osvrtom na statičku verifikaciju softvera, konkretno na simboličko izvršavanje. Simboličko izvršavanje je jedna od danas često
 primenjenih tehnika statičke verifikacije softvera, a koristi se i u najvećim softverskim kompanijama. Za rad je odabran alat KLEE, zasnovan na simboličkom izvršavanju, koji je obogaćen novim algoritmom pretrage stabla stanja.
 
 Osnovna ideja rada je kombinovanje dva osnovna algoritma pretrage grafova kako bi se u kontekstu simboličkog izvršavanja iskoristile njihove dobre strane. Poznati problemi koje imaju ovi algoritmi pojedinačno nisu u potpunosti rešeni, ali su u velikoj meri uspešno prevaziđeni. Predloženi algoritam je na programima koji su napisani u okviru GNU Coreutils alata, poređen sa algoritmom koji su autori rada\cite{klee} predložili kao najbolji u smislu pokrivenosti koda i sveukupnih performansi. Rezultati su pokazali da se ovim pristupom može značajno uštedeti na vremenu, pri čemu je pokrivenost koda nešto manja.
