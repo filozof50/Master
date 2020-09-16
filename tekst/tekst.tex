@@ -63,13 +63,21 @@
 \providecommand*\ext@lstlisting{lol}%
 \makeatother
 
+% ovo je dodato za skaliranje fonta u listinzima
+\makeatletter
+\newcommand\BeraMonottfamily{%
+  \def\fvm@Scale{0.9}% scales the font down
+  \fontfamily{fvm}\selectfont% selects the Bera Mono font
+}
+\makeatother
+
 \newtoggle{InString}{}% Keep track of if we are within a string
 \togglefalse{InString}% Assume not initally in string
 \newcommand*{\ColorIfNotInString}[1]{\iftoggle{InString}{#1}{\color{red}#1}}%
 \lstset { %
     language=C++,
     backgroundcolor=\color{black!5}, % set backgroundcolor
-    basicstyle=\footnotesize\ttfamily,% basic font setting
+    basicstyle=\footnotesize\BeraMonottfamily,% basic font setting, standardan font je \ttfamily umesto \BeraMonottfamily
     keywordstyle=\color{magenta},
     stringstyle=\color{red},
     commentstyle=\color{green},
@@ -184,7 +192,7 @@ opisani u poglavlju \ref{algoritam}. Rezultati poređenja rada algoritma sa rado
 % ------------------------------------------------------------------------------
 \chapter{Simboličko izvršavanje} \label{chp:simbolicko_izvrsavanje}
 
-\indent Simboličko izvršavanje je tehnika statičke verifikacije softvera, odnosno bavi se statičkom analizom koda. Jedna je od najkorišćenijih tehnika statičke verifikacije. Na primer, još od 2008. godine, nad većinom Majkrosoftovih (eng. \textit{Microsoft}) aplikacija se vrši verifikacija pomoću simboličkog izvršavanja, pre nego što aplikacije budu objavljene \cite{microsoft}. O efikasnosti ove tehnike govori činjenica da je 30\% grešaka u operativnom sistemu \textit{Windows 7} pronađeno baš na ovaj način, pri čemu su u pitanju greške koje nisu bile otkrivene korišćenjem drugih tehnika za statičku i dinamičku analizu softvera. Simboličko izvršavanje može da bude statičko i dinamičko, o čemu će biti reči u daljem tekstu.
+\indent Simboličko izvršavanje je tehnika statičke verifikacije softvera, odnosno bavi se statičkom analizom koda. Jedna je od najkorišćenijih tehnika statičke verifikacije. Na primer, još od 2008. godine, nad većinom Majkrosoftovih (eng. \textit{Microsoft}) aplikacija se vrši verifikacija pomoću simboličkog izvršavanja, pre nego što aplikacije budu objavljene \cite{microsoft}. O efikasnosti ove tehnike govori činjenica da je 30\% grešaka u operativnom sistemu \textit{Windows 7} pronađeno baš na ovaj način, pri čemu su u pitanju greške koje nisu bile otkrivene korišćenjem drugih tehnika za statičku i dinamičku analizu softvera. Simboličko izvršavanje može biti navodjeno konkretnim izvrsavanjem i u tom slucaju se ono naziva dinamicko simbolicko izvrsavanje, o čemu će biti reči u daljem tekstu.
 
 \section{Principi simboličkog izvršavanja}
 
@@ -716,7 +724,8 @@ Nakon što se izvrši naredba u okviru stanja i ažurira skup aktivnih stanja, v
                                     stanja_koja_treba_izbaciti):
       if popunjena_memorija >= memorija_dodeljena_alatu:
         broj_stanja = aktivna_stanja.velicina()
-        X = slucajan_broj(1, broj_stanja - broj_stanja * memorija_dodeljena_alatu / popunjena_memorija)
+        X = slucajan_broj(1, broj_stanja - broj_stanja * 
+        memorija_dodeljena_alatu / popunjena_memorija)
 
         while X > 0:
           Y = slucajan_broj(0, aktivna_stanja.velicina())
@@ -731,7 +740,7 @@ Nakon što se izvrši naredba u okviru stanja i ažurira skup aktivnih stanja, v
           
           if stanje in nova_stanja:
             nova_stanja.ukloni(stanje)
-          X--
+          X = X - 1
           
       if izvrsava_se_BFS i popunjena_memorija > zadate_granice:
         promeni_algoritam_na_DFS()
@@ -981,7 +990,7 @@ Na slici \ref{fig:poredjenje_instrukcija} se mogu videti rezultati poređenja po
 \end{figure}
 
 \newpage
-Rezultati sprovedenog istraživanja i poređenja algoritma BFS-DFS sa algoritmom koji su predložili autori rada\cite{klee} su pokazali da je predloženim pristupom, gde se kombinuju pretraga grafa u širinu (da bi se stablo što brže razgranalo) i pretraga grafa u dubinu (kako bi se putanje izučile što dublje je moguće), može uštedeti na vremenu pri čemu se ne gubi previše na pokrivenosti koda. U tabeli \ref{tab:tabela_naredbe} se mogu apsolutne vrednosti i razlike za pokrivenost naredbi prilikom izvršavanja slučajne pretrage sa heuristikom i algoritma BFS-DFS, dok tabela \ref{tab:tabela_grane} predstavlja iste ove vrednosti za pokrivenost grana. Apsolutne vrednosti vremena izvršavanja i razlike za navedene algoritme su prikazane u tabeli \ref{tab:tabela_vreme}.
+Rezultati sprovedenog istraživanja i poređenja algoritma BFS-DFS sa algoritmom koji su predložili autori rada \cite{klee} su pokazali da je predloženim pristupom, gde se kombinuju pretraga grafa u širinu (da bi se stablo što brže razgranalo) i pretraga grafa u dubinu (kako bi se putanje izučile što dublje je moguće), može uštedeti na vremenu pri čemu se ne gubi previše na pokrivenosti koda. U tabeli \ref{tab:tabela_naredbe} se mogu videti apsolutne vrednosti i razlike za pokrivenost naredbi prilikom izvršavanja slučajne pretrage sa heuristikom i algoritma BFS-DFS, dok tabela \ref{tab:tabela_grane} predstavlja iste ove vrednosti za pokrivenost grana. Apsolutne vrednosti vremena izvršavanja i razlike za navedene algoritme su prikazane u tabeli \ref{tab:tabela_vreme}.
 
 \begin{table}
 {\rowcolors{3}{gray!80!white!40}{gray!80!white!65}
@@ -1042,7 +1051,7 @@ Rezultati sprovedenog istraživanja i poređenja algoritma BFS-DFS sa algoritmom
  \multicolumn{4}{|c|}{Rezultati poređenja algoritama} \\
  \noalign{\global\arrayrulewidth=0.2mm}
  \hline
- Komanda& Ukupno vreme izvršavanja u sekundama (slučajna pretraga sa heuristikom)& Ukupno vreme izvršavanja u sekundama (BFS-DFS)& Razlika u vremenu (\%)\\
+ Komanda& Ukupno vreme izvršavanja u sekundama (slučajna pretraga sa heuristikom)& Ukupno vreme izvršavanja u sekundama (BFS-DFS)& Odnos vremena (\%)\\
  \hline
  chown& 19066.11& 12028.77& \textbf{63.09}\\ \arrayrulecolor{black}\hline
  cp& 10913.03& 8305.45&  \textbf{76.11}\\\hline
@@ -1058,7 +1067,7 @@ Rezultati sprovedenog istraživanja i poređenja algoritma BFS-DFS sa algoritmom
  true& 0.85& 0.95& 111.76 \\
  \hline
 \end{tabular}}
-\caption{\label{tab:tabela_vreme}Poređenje algoritama na podskupu programa iz skupa GNU Coreutils alata. Tabela predstavlja poređenje algoritma BFS-DFS u odnosu na slučajnu pretragu sa heuristikom. U tabeli se vidi ukupno vreme izvršavanja za ova dva algoritma kao i razlika vremena. Vrednost TO predstavlja prekoračenje vremena izvršavanja koje je bilo dodeljeno alatu KLEE, od 12 sati. Razlika vremena je izražena u procentima. Svaka vrednost je dobijena tako što je računato koliko procenata vremena utrošenog na slučajnu pretragu sa heuristikom je vreme utrošeno na izvršavanje algoritma BFS-DFS. Na mestima gde razlika nije navedena, razlog je što nije poznato tačno vreme izvršavanja algoritma slučajne pretrage sa heuristikom jer je došlo do prekoračenja vremena. Podebljane vrednosti pokazuju gde je algoritam BFS-DFS bio bolji u odnosu na slučajnu pretragu sa heuristikom.}
+\caption{\label{tab:tabela_vreme}Poređenje algoritama na podskupu programa iz skupa GNU Coreutils alata. Tabela predstavlja poređenje algoritma BFS-DFS u odnosu na slučajnu pretragu sa heuristikom. U tabeli se vidi ukupno vreme izvršavanja za ova dva algoritma kao i odnos vremena. Vrednost TO predstavlja prekoračenje vremena izvršavanja koje je bilo dodeljeno alatu KLEE, od 12 sati. Razlika vremena je izražena u procentima. Svaka vrednost je dobijena tako što je računato koliko procenata vremena utrošenog na slučajnu pretragu sa heuristikom je vreme utrošeno na izvršavanje algoritma BFS-DFS. Na mestima gde razlika nije navedena, razlog je što nije poznato tačno vreme izvršavanja algoritma slučajne pretrage sa heuristikom jer je došlo do prekoračenja vremena. Podebljane vrednosti pokazuju gde je algoritam BFS-DFS bio bolji u odnosu na slučajnu pretragu sa heuristikom.}
 \end{table}
 
 % ------------------------------------------------------------------------------
